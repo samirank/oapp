@@ -1,0 +1,27 @@
+body {
+	font-family: helvetica, ariel;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+h1 {
+	text-align: center;
+	background: #888;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+table {
+	border: 1px solid #666;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+table, tr, td {
+	padding: 5px;
+}
+#subre {
+	text-align: center;
+}
+#subre td input {
+	margin-right: 10px;
+	margin-left: 10px;
+}

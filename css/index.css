@@ -1,0 +1,199 @@
+td#content{
+	display: block;
+	background: #4e54c8;
+	background: -webkit-linear-gradient(to right, #6c5ce7, #a29bfe);
+	background: linear-gradient(to top right, #6c5ce7, #a29bfe);
+	padding: unset;
+	margin: 0;
+	width: 100%;
+}
+
+.header {
+	padding: 50px;
+	box-sizing: border-box;
+	display: flex;
+}
+
+#content h2 {
+	width: 60%;
+	word-wrap: normal;
+	color: #fff;
+	font-size: 65;
+	font-weight: 400;
+	text-shadow: 9px 9px 35px rgba(39, 39, 39, 0.5);
+}
+
+a#registerLink {
+	display: block;
+	margin-top: 40px;
+	margin-bottom: 90px;
+	width: 100px;
+	background: #ffffff;
+	text-align: center;
+	color: #4e54c8;
+	padding: 8px 16px;
+	font-size: 15px;
+	font-weight: bolder;
+	border-radius: 16px;
+	box-shadow: 8px 8px 33px #00000047;
+}
+a#registerLink:hover {
+	background-color: #a29bfe;
+	color: #fff;
+	box-shadow: 4px 4px 33px #0000002b;
+}
+.landing-text{
+	width: 50%;
+}
+.landing-text p {
+	font-family: "Roboto",sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	color: #fff;
+	width: 400px;
+}
+.landing-form {
+	background-color: #fff;
+	right: 0px;
+	width: 43%;
+	border-radius: 20px;
+	box-shadow: 8px 8px 70px #00000047;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 40px;
+}
+.landing-form a {
+	display: block;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: linear-gradient(to right, #e84393e3, #fd79a8);
+	margin: 40 auto;
+	width: 140;
+	text-align: center;
+	color: #fff;
+	padding: 18px 35px;
+	font-size: 20px;
+	font-weight: bolder;
+	border-radius: 37px;
+	box-shadow: 8px 8px 34px 0px #00000029;
+}
+.landing-form a:hover{
+	background: #e84393;
+}
+.landing-form hr{
+	border-color: #fd79a8bf;
+	width: 180px;
+	position: relative;
+	margin: 84px auto;
+}
+#wrap td{
+	border: unset;
+}
+#content input{
+	width: 20%;
+}
+#bookDoc{
+	position: relative;
+	height: 600px;
+}
+.search-input-field{
+	position: absolute;
+	top: 15%;
+	z-index: 10;
+	text-align: center;
+}
+.search-input-field img{
+	width: 200;
+	position: relative;
+}
+.book-doc {
+	left: 5%;
+	color: #fff;
+}
+.book-lab {
+	right: 5%;
+	color: #666;
+}
+.doctor_background {
+	background: url(../images/doctor_background.jpg);
+	height: 600px;
+	opacity: 0.1;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.background-curve{
+	background: url(../images/background-curve.svg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+}
+#bookDoc input[type='text'] {
+	width: 250px;
+	height: 50px;
+	font-size: 16px;
+	border: 4px solid;
+	border-radius: 30px 0px 0px 30px;
+	border-right: unset;
+	border-color: #fd79a8;
+	box-shadow: 6px 6px 27px #0000002e;
+	outline-color: #fff0;
+	padding: 7px 26px;
+}
+#bookDoc select{
+	width: 250px;
+	height: 50px;
+	font-size: 16px;
+	border: 4px solid;
+	border-radius: 30px 0px 0px 30px;
+	border-right: unset;
+	border-color: #fd79a8;
+	box-shadow: 6px 6px 27px #0000002e;
+	outline-color: #fff0;
+	padding: 7px 26px;
+}
+.search-input-field button[type='submit']{
+	height: 50px;
+	font-size: 16px;
+	padding: 11px 29px;
+	background: linear-gradient(to left, #e84393e3, #fd79a8);
+	border: unset;
+	border-radius: 0px 30px 30px 0px;
+	margin-left: -4px;
+	color: #fff;
+	box-shadow: 6px 6px 27px #0000002e;
+	outline-color: #fff0;
+}
+.search-input-field button[type='submit']:hover{
+	background: #e84393e3;
+}
+.search-input-field p{
+	font-size: 20px;
+	padding: 10;
+	/*text-shadow: 4px 4px 8px #00000073;*/
+}
+div.patient-img{
+	background: url(../images/patient.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 149px;
+	margin-left: 25%;
+	margin-top: 20px;
+	margin-bottom: 67px;
+}
+div.doctor-icon{
+	background: url(../images/doctor.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 200px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	margin-left: 25%;
+}
