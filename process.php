@@ -56,6 +56,34 @@ if (isset($_POST['add_dept'])) {
     }
 }
 
+//Add Doctor
+if (isset($_POST['d_submit'])) {
+    $name = $_POST['dname'];
+    $uname = $_POST['uname'];
+    $addr = $_POST['dadd'];
+    $phno = $_POST['dphno'];
+    $desig = $_POST['d_desig'];
+    $dept = $_POST['d_dept'];
+    $exp = $_POST['d_exp'];
+    $gender = $_POST['d_gen'];
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
 
+    mysqli_autocommit($con,false);
+    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`) VALUES ('$uname', 'doctor', '$password')";
+    if(!mysqli_query($con,$sql)){
+        mysqli_rollback($con);
+        echo mysqli_error($con);
+    }
 
+    $sql = "INSERT INTO `doctors` (`user_id`, `doc_name`, `address`, `ph_no`, `designation`, `dept`, `exp`, `gender`) VALUES ('LAST_INSERT_ID', '$name', '$addr', '$phno', '$desig', '$dept', '$exp', '$gender')";
+    if(!mysqli_query($con,$sql)){
+        mysqli_rollback($con);
+        echo mysqli_error($con);
+    }else{
+        mysqli_commit($con);
+        $_SESSION['msg'] = "Doctor added successfully";
+        header("location: doc_reg.php");
+    }
+}
 ?>
