@@ -58,8 +58,8 @@
 									<div class="search-input-field book-doc">
 										<div class="doctor-icon"></div>
 										<form action="">
-											<p>Search by Specialty / Symptom</p>
-											<!-- <input type="text" placeholder="Specialty / Symptom"> -->
+											<p>Search by Department</p>
+											<!-- <input type="text" placeholder="Department"> -->
 											<select name="symptom">
 												<option value="" disabled selected>Select</option>
 												<?php $result = mysqli_query($con,"select * from departments");
