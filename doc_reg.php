@@ -56,6 +56,24 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="text" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" name="pass">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Confirm password</td>
+                    <td>
+                        <input type="password" name="cnf_pass">
+                    </td>
+                </tr>
+                <tr>
                     <td></td>
                     <td>
                         <button class="btn" type="submit" name="d_submit">Submit</button>
