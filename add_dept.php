@@ -1,4 +1,4 @@
-<?php include('master/head.php') ?>
+<?php include('master/head.php'); ?>
 <td class="content">
 	<ul class="breadcrumb">
 		<li><a href="dashboard.php">Dashboard</a></li>
