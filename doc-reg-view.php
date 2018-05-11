@@ -19,7 +19,7 @@ include 'master/head.php';
             </tr>
             <?php
             $count=1;
-            $result = mysql_query("select * from doctors");
+            $result = mysqli_query("select * from doctors");
             if (mysql_num_rows($result) > 0) {
                 while ($row = mysql_fetch_assoc($result)) {
                     ?>
