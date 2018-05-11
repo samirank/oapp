@@ -12,6 +12,10 @@
                 <td><input type="text" name="dname"></td>
             </tr>
             <tr>
+                <td>User name</td>
+                <td><input type="text" name="uname"></td>
+            </tr>
+            <tr>
                 <td>Address :</td>
                 <td><textarea name="dadd"></textarea></td>
             </tr>
