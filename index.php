@@ -24,64 +24,68 @@
 						} ?>
 					</ul>
 					<?php if (isset($_SESSION['log_id'])) { ?>
-					<div class="menu-right">  
-						<a id="logout-btn" href="logout.php">Logout</a>
-					</div>
-					<?php } ?>
+						<div class="menu-right">  
+							<a id="logout-btn" href="logout.php">Logout</a>
+						</div>
+						<?php } ?>
 
-				</td>
-			</tr>
-			<tr>
-				<td id="content">
-					<div class="header">
-						<div class="landing-text">
-							<h2>Book Appointments Online</h2>
-							<a id="registerLink" href="patientreg.php">Register Now</a>
-							<p>This Online Appiontment  Manageemet system is
-							developed by the students of IGNOU as a mini project for the course MCS-044. Find more in the about section.</p>
-						</div>
-						<div class="landing-form">
-							<a href="#bookDoc" id="bookDoctor">Book Doctor</a>
-							<hr>
-							<a href="#bookDoc" id="bookLab">Book lab test</a>
-						</div>
-					</div>
-					<!-- Book Doctor Form -->
-					<div id="bookDoc">
-						<div class="background-curve"></div>
-						<div class="doctor_background"></div>
-						<!-- <img src="images/doctor_background.jpg" alt="doctor_background"> -->
-						<div class="search-input-field book-doc">
-							<div class="doctor-icon"></div>
-							<form action="">
-								<p>Search by Specialty / Symptom</p>
-								<!-- <input type="text" placeholder="Specialty / Symptom"> -->
-								<select name="symptom">
-									<option value="" disabled selected>Select</option>
-									<?php $result = mysqli_query($con,"select * from departments");
-									if (mysqli_num_rows($result) > 0) {
-										while ($row = mysqli_fetch_assoc($result)) { ?>
-										<option value="<?php echo $row['dept_id']; ?>"><?php echo $row['dept_name']; ?></option>
-										<?php }}?>                       
-									</select>
-									<button type="Submit">Submit</button>
-								</form>
-							</div>
-							<div class="search-input-field book-lab">
-								<div class="patient-img"></div>
-								<form action="">
-									<p>Enter Name of Lab test</p>
-									<input type="text" placeholder="Type test name">
-									<button type="Submit">Submit</button>
-								</form>
-							</div>
-						</div>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" id="footer">&copy; Samiran Kakoty 2018</td>
-				</tr>
-			</table>
-		</div>
-	</body>
-	</html>
+					<td id="content">
+						<div class="header">
+							<div class="landing-text">
+								<h2>Book Appointments Online</h2>
+								<?php if (!isset($_SESSION['log_id'])) { ?>
+									<a id="registerLink" href="patientreg.php">Register Now</a>
+								<?php }else{ ?>
+									<br><br>
+								<?php } ?>
+									<p>This Online Appiontment  Manageemet system is
+									developed by the students of IGNOU as a mini project for the course MCS-044. Find more in the about section.</p>
+									</div>
+									<div class="landing-form">
+										<a href="#bookDoc" id="bookDoctor">Book Doctor</a>
+										<hr>
+										<a href="#bookDoc" id="bookLab">Book lab test</a>
+									</div>
+								</div>
+								<!-- Book Doctor Form -->
+								<div id="bookDoc">
+									<div class="background-curve"></div>
+									<div class="doctor_background"></div>
+									<!-- <img src="images/doctor_background.jpg" alt="doctor_background"> -->
+									<div class="search-input-field book-doc">
+										<div class="doctor-icon"></div>
+										<form action="">
+											<p>Search by Specialty / Symptom</p>
+											<!-- <input type="text" placeholder="Specialty / Symptom"> -->
+											<select name="symptom">
+												<option value="" disabled selected>Select</option>
+												<?php $result = mysqli_query($con,"select * from departments");
+												if (mysqli_num_rows($result) > 0) {
+													while ($row = mysqli_fetch_assoc($result)) { ?>
+														<option value="<?php echo $row['dept_id']; ?>"><?php echo $row['dept_name']; ?></option>
+														<?php }}?>                       
+													</select>
+													<button type="Submit">Submit</button>
+												</form>
+											</div>
+											<div class="search-input-field book-lab">
+												<div class="patient-img"></div>
+												<form action="">
+													<p>Enter Name of Lab test</p>
+													<input type="text" placeholder="Type test name">
+													<button type="Submit">Submit</button>
+												</form>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" id="footer">&copy; Samiran Kakoty 2018</td>
+								</tr>
+							</table>
+						</div>
+					</body>
+					</html>
