@@ -110,8 +110,8 @@
 							<tr>
 								<td></td>
 								<td>
-									<input class="btn" type="submit" name="patientreg">
-									<input class="btn" type="reset">
+									<button class="btn" type="submit" name="patientreg">Submit</button>
+									<button class="btn" type="reset">Reset</button>
 								</td>
 							</tr>
 						</form>
