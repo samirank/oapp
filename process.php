@@ -49,20 +49,19 @@ if (isset($_POST['d_submit'])) {
     $dept = $_POST['d_dept'];
     $exp = $_POST['d_exp'];
     $gender = $_POST['d_gen'];
-    $email = $_POST['email'];
     $password = $_POST['pass'];
 
     mysqli_autocommit($con,false);
     $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`) VALUES ('$uname', 'doctor', '$password')";
     if(!mysqli_query($con,$sql)){
-        mysqli_rollback($con);
         echo (mysqli_error($con));
+        mysqli_rollback($con);
     }
 
     $sql = "INSERT INTO `doctors` (`user_id`, `doc_name`, `address`, `ph_no`, `designation`, `dept`, `exp`, `gender`) VALUES (LAST_INSERT_ID(), '$name', '$addr', '$phno', '$desig', '$dept', '$exp', '$gender')";
     if(!mysqli_query($con,$sql)){
-        mysqli_rollback($con);
         echo (mysqli_error($con));
+        mysqli_rollback($con);
     }else{
         mysqli_commit($con);
         $_SESSION['msg'] = "Doctor added successfully";
