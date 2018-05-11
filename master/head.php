@@ -33,7 +33,8 @@
                     	<li><a href="dashboard.php">Dashboard</a></li>
                     	<li><a href="departments.php">Departments</a></li>
                         <li><a href="doc_reg.php">Doctor Registration</a></li>
-                        <li class="menu-end-item"><a href="doc-reg-view.php">View Doctor Details</a></li>
+                        <li><a href="doc-reg-view.php">View Doctor Details</a></li>
+                        <li class="menu-end-item"><a href="lab.php">Laboratory</a></li>
                         <?php } ?>
 
 
