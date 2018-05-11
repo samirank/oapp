@@ -17,11 +17,18 @@
             </tr>
             <tr>
                 <td>Phone Number :</td>
-                <td><input type="text" name="dphno"></td>
+                <td><input type="text" name="dphno" maxlength="10"></td>
             </tr>
             <tr>
                 <td>Designation :</td>
-                <td><input type="text" name="d_desig"></td>
+                <td><select name="d_desig">
+                    <option selected disabled>Select</option>
+                    <option>Junior Doctor</option>
+                    <option>General Practitioner</option>
+                    <option>Consultant</option>
+                    <option>SAS Doctor</option>
+                    <option>Senior Doctor</option>
+                </select></td>
             </tr>
             <tr>
                 <td>Department :</td>
@@ -44,7 +51,8 @@
                     <td>Gender :</td>
                     <td>
                         <input type="radio" name="d_gen"> Male &emsp;
-                        <input type="radio" name="d_gen"> Female
+                        <input type="radio" name="d_gen"> Female &emsp;
+                        <input type="radio" name="d_gen"> Other
                     </td>
                 </tr>
                 <tr>
