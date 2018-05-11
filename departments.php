@@ -25,7 +25,7 @@
                         <td><?php echo $count; ?></td>
                         <td><?php echo $row["dept_id"] ?></td>
                         <td><?php echo $row["dept_name"] ?></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a href="" class="btn-d">Delete</a></td>
                     </tr>
                     <?php
                     $count++;
