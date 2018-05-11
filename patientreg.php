@@ -77,6 +77,7 @@
 								<td>Blood group</td>
 								<td>
 									<select name="bgroup">
+										<option value="" selected disabled>Select</option>
 										<option value="A+">A+</option>
 										<option value="A-">A-</option>
 										<option value="B+">B+</option>
