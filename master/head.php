@@ -38,7 +38,7 @@
 
 
                         <!-- patient Pane -->
-                        <?php if($_SESSION['log_role'] == "admin"){  ?>
+                        <?php if($_SESSION['log_role'] == "patient"){  ?>
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li><a href="bookings.php">Bookings</a></li>
                         <?php } ?>
