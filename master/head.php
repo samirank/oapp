@@ -42,6 +42,7 @@
                         <?php if($_SESSION['log_role'] == "patient"){  ?>
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li><a href="bookings.php">Bookings</a></li>
+                        <li><a href="profile.php">My profile</a></li>
                         <?php } ?>
                     </ul>
                 </td>

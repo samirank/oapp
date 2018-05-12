@@ -38,7 +38,7 @@ include 'master/db.php';
                     $count++;
                 }
             } else {
-                echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';
+                echo '<tr><td colspan="10" style="text-align:center;">No records found !</td></tr>';
             }
             ?>
         </table>

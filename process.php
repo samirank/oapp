@@ -68,4 +68,40 @@ if (isset($_POST['d_submit'])) {
         header("location: doc_reg.php");
     }
 }
+
+// Patient Registration
+if(isset($_POST['patientreg'])){
+    $uname=$_POST["username"];
+    $name=$_POST["name"];
+    $address=$_POST["address"];
+    $mobileno=$_POST["mobileno"];
+    $gname=$_POST["guardian"];
+    $ecnumber=$_POST["emcont"];
+    $gender=$_POST["gender"];
+    $bgroup=$_POST["bgroup"];
+    $cur_med=$_POST["cur_medication"];
+    $email=$_POST["email_id"];
+    $password=$_POST["pass"];
+
+
+    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`) VALUES ('$uname', 'patient', '$password')";
+    mysqli_autocommit(false);
+    if(!mysqli_query($con, $sql)){
+        echo mysqli_error($con);
+        mysqli_rollback($con);
+    }
+
+
+    $sql="INSERT INTO `patients`(`name`, `address`, `mobileno`, `guardian`, `emergencycontact`, `gender`, `bgroup`, `cur_medication`, `email_id`, `user_id`) VALUES ('$name','$address','$mobileno','$gname','$ecnumber','$gender','$bgroup','$cur_med','$email', LAST_INSERT_ID())";
+    if(!mysqli_query($con, $sql)){
+        echo mysqli_error($con);
+        mysqli_rollback($con);
+    }
+    else{
+        mysqli_commit($con);
+         mysqli_close($con);
+        $_SESSION['msg']="You're registered.";
+        header("location: patientreg.php");
+    }
+}
 ?>
