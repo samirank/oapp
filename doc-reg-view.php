@@ -31,7 +31,7 @@ include 'master/db.php';
                         <td><?php echo $row["designation"]; ?></td>
                         <td><?php echo $row["dept"]; ?></td>
                         <td><?php echo $row["exp"]; ?> years</td>
-                        <td><a href="">Edit</a></td>
+                        <td><a class="btn-e" href="">Edit</a></td>
                         <td><a class="btn-d" href="">Delete</a></td>
                     </tr>
                     <?php
