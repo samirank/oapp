@@ -85,7 +85,7 @@ if(isset($_POST['patientreg'])){
 
 
     $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`) VALUES ('$uname', 'patient', '$password')";
-    mysqli_autocommit(false);
+    mysqli_autocommit($con,false);
     if(!mysqli_query($con, $sql)){
         echo mysqli_error($con);
         mysqli_rollback($con);

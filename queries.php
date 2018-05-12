@@ -31,19 +31,20 @@ if (mysqli_query($con,$sql)) {
 }else{
 	echo "'doctors' table already exist";
 }
+
 // Create patients table
 $sql = "CREATE TABLE `patients` (
   `patient_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `mobileno` int(11) NOT NULL,
+  `mobileno` varchar(15) NOT NULL,
   `guardian` varchar(50) NOT NULL,
   `emergencycontact` int(11) NOT NULL,
   `gender` char(10) NOT NULL,
   `bgroup` varchar(5) NOT NULL,
   `cur_medication` char(5) NOT NULL,
   `email_id` varchar(50) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'patients'";
