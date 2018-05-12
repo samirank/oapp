@@ -294,6 +294,9 @@ ul.breadcrumb li a:hover {
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
 }
+.btn-a:hover{
+    background: #e84393;
+}
 .btn-d{
     display: block;
     background: #fd79a8;
@@ -311,8 +314,22 @@ ul.breadcrumb li a:hover {
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
 }
-.btn-a:hover{
-    background: #e84393;
+.btn-e{
+    display: block;
+    background: #fd79a8;
+    background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+    background: #0000ff;
+    width: 76px;
+    font-size: 12px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px 11px;
+    color: #fff;
+    border: unset;
+    border-radius: 20px;
+    border-color: #fff0;
+    box-shadow: 8px 8px 34px 0px #00000029;
+    outline-color: #fff0;
 }
 a#add_dept_btn {
     width: 140px;
