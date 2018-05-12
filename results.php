@@ -47,6 +47,7 @@
 									<img src="<?php echo $row['profile_pic']; ?>" alt="doc_profile_pic">
 									<div class="doc-name"><?php echo $row['doc_name']; ?></div>
 									<div class="doc_dept"><?php echo $row['dept_name']; ?></div>
+									<a href="schedule.php?doc_id=<?php echo $row['doc_id'];?>" class="btn-a">Book Now</a>
 
 								</div>
 

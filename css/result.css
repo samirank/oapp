@@ -14,9 +14,17 @@
 	margin-bottom: 20px;
 }
 .doc-result-container{
+	position: relative;
 	display: flex;
 	height: 100px;
 }
 .doc-result-container img{
 	width: 100px;
+}
+a.btn-a{
+	height: 32px;
+	width: 96px;
+	position: absolute;
+	right: 10px;
+	top: 25;
 }
