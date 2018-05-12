@@ -57,7 +57,7 @@
 									<!-- <img src="images/doctor_background.jpg" alt="doctor_background"> -->
 									<div class="search-input-field book-doc">
 										<div class="doctor-icon"></div>
-										<form action="">
+										<form action="results.php" method="POST">
 											<p>Search by Department</p>
 											<!-- <input type="text" placeholder="Department"> -->
 											<select name="symptom">
@@ -73,7 +73,7 @@
 											</div>
 											<div class="search-input-field book-lab">
 												<div class="patient-img"></div>
-												<form action="">
+												<form action="results.php" method="POST">
 													<p>Enter Name of Lab test</p>
 													<input type="text" placeholder="Type test name">
 													<button type="Submit">Submit</button>
