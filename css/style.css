@@ -82,6 +82,7 @@ input[type="text"], textarea, input[type="password"]{
     padding: 7px 12px;
     border-radius: 4px;
     width: 90%;
+    font-family: arial;
 }
 select{
     border: 1px solid #aaa;
@@ -207,21 +208,21 @@ td#footer{
 
 /*Logout Button*/
 a#logout-btn{
- display: block;
- background: #fd79a8;
- background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
- background: linear-gradient(to right, #e84393e3, #fd79a8);
- width: 86px;
- height: unset;
- font-size: unset;
- font-weight: normal;
- text-align: center;
- margin: -7px 0px 0px 10px;
- box-sizing: border-box;
- padding: 9px 15px;
- color: #fff;
- border-radius: 37px;
- box-shadow: 8px 8px 34px 0px #00000029;
+   display: block;
+   background: #fd79a8;
+   background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+   background: linear-gradient(to right, #e84393e3, #fd79a8);
+   width: 86px;
+   height: unset;
+   font-size: unset;
+   font-weight: normal;
+   text-align: center;
+   margin: -7px 0px 0px 10px;
+   box-sizing: border-box;
+   padding: 9px 15px;
+   color: #fff;
+   border-radius: 37px;
+   box-shadow: 8px 8px 34px 0px #00000029;
 }
 a#logout-btn:hover{
     background: #e84393;
