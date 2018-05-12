@@ -3,7 +3,6 @@ include 'master/head.php';
 include 'master/db.php';
 ?>
 <td id="content">
-    <h1>About Us</h1>
     <form action="process.php" method="post">
         <table id="view-form" cellspacing="0">
             <tr>
@@ -14,7 +13,6 @@ include 'master/db.php';
                 <th>Phone No</th>
                 <th>Designation</th>
                 <th>Department</th>
-                <th>Specialization</th>
                 <th>Experience</th>                
                 <th colspan="2">Action</th>
             </tr>
@@ -22,20 +20,19 @@ include 'master/db.php';
             $count=1;
             $result = mysqli_query($con,"select * from doctors");
             if (mysqli_num_rows($result) > 0) {
-                while ($row = mysql_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
                         <td><?php echo $count; ?></td>
-                        <td><?php echo $row["doc_name"] ?></td>
-                        <td><?php echo $row["gender"] ?></td>
-                        <td><?php echo $row["address"] ?></td>
-                        <td><?php echo $row["ph_no"] ?></td>
-                        <td><?php echo $row["designation"] ?></td>
-                        <td><?php echo $row["dept"] ?></td>
-                        <td><?php echo $row["specialisation"] ?></td>
-                        <td><?php echo $row["expr"] ?></td>
+                        <td><?php echo $row["doc_name"]; ?></td>
+                        <td><?php echo $row["gender"]; ?></td>
+                        <td><?php echo $row["address"]; ?></td>
+                        <td><?php echo $row["ph_no"]; ?></td>
+                        <td><?php echo $row["designation"]; ?></td>
+                        <td><?php echo $row["dept"]; ?></td>
+                        <td><?php echo $row["exp"]; ?> years</td>
                         <td><a href="">Edit</a></td>
-                        <td><a href="">Delete</a></td>
+                        <td><a class="btn-d" href="">Delete</a></td>
                     </tr>
                     <?php
                     $count++;
