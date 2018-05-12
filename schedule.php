@@ -42,6 +42,7 @@
 								<tr>
 									<td><?php echo $row['day']; ?></td>
 									<td><?php echo $row['time_from']." - ".$row['time_from']; ?></td>
+									<td><a class="btn-e" href="">Book</a></td>
 								</tr>
 
 								<?php }}

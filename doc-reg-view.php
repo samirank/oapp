@@ -31,8 +31,15 @@ include 'master/db.php';
                         <td><?php echo $row["designation"]; ?></td>
                         <td><?php echo $row["dept"]; ?></td>
                         <td><?php echo $row["exp"]; ?> years</td>
-                        <td><a class="btn-e" href="">Edit</a></td>
-                        <td><a class="btn-d" href="">Delete</a></td>
+                        <form action="process.php" method="POST"></form>
+                        <td>
+                            <input type="text" hidden value="<?php echo $row['doc_id']; ?>" name="doc_id">
+                            <select name="action">
+                            <option value="schedule">Manage Schedule</option>
+                            <option value="Edit">Edit</option>
+                            <option value="delete">Delete</option>
+                        </select></td>
+                        <td><button type="submit" name="doc_view_action">Go</button></td>
                     </tr>
                     <?php
                     $count++;

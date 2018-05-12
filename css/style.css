@@ -346,7 +346,8 @@ a#add_dept_btn {
 }
 
 table#view-form td{
-    width: 70%;
+    width: auto;
+    text-align: center;
     padding: 10px 15px;
     border: unset;
 }
