@@ -6,3 +6,17 @@
 	width: 60%;
 	margin: auto;
 }
+
+.filters{
+	height: 15px;
+	padding: 10px;
+	background-color: #ddd;
+	margin-bottom: 20px;
+}
+.doc-result-container{
+	display: flex;
+	height: 100px;
+}
+.doc-result-container img{
+	width: 100px;
+}

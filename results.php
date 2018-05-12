@@ -43,7 +43,7 @@
 								while ($row = mysqli_fetch_assoc($result)) { ?>
 
 								<!-- Container for each doctor -->
-								<div class="doc_result_container">
+								<div class="doc-result-container">
 									<img src="<?php echo $row['profile_pic']; ?>" alt="doc_profile_pic">
 									<div class="doc-name"><?php echo $row['doc_name']; ?></div>
 									<div class="doc_dept"><?php echo $row['dept_name']; ?></div>
