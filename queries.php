@@ -34,7 +34,7 @@ if (mysqli_query($con,$sql)) {
 
 // Create patients table
 $sql = "CREATE TABLE `patients` (
-  `patient_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `mobileno` varchar(15) NOT NULL,
@@ -44,7 +44,8 @@ $sql = "CREATE TABLE `patients` (
   `bgroup` varchar(5) NOT NULL,
   `cur_medication` char(5) NOT NULL,
   `email_id` varchar(50) NOT NULL,
-  `user_id` varchar(15) NOT NULL
+  `user_id` varchar(15) NOT NULL,
+  PRIMARY KEY (`patient_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'patients'";
