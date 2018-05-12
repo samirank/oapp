@@ -68,7 +68,7 @@
 														<option value="<?php echo $row['dept_id']; ?>"><?php echo $row['dept_name']; ?></option>
 														<?php }}?>                       
 													</select>
-													<button type="Submit">Submit</button>
+													<button type="Submit" name="search_doc">Submit</button>
 												</form>
 											</div>
 											<div class="search-input-field book-lab">
@@ -76,7 +76,7 @@
 												<form action="results.php" method="POST">
 													<p>Enter Name of Lab test</p>
 													<input type="text" placeholder="Type test name">
-													<button type="Submit">Submit</button>
+													<button type="Submit" name="search_lab">Submit</button>
 												</form>
 											</div>
 										</div>

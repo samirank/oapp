@@ -54,6 +54,17 @@ if (mysqli_query($con,$sql)) {
 }
 
 
+// Add profile pic in doctor
+$sql = "ALTER TABLE `doctors` ADD `profile_pic` VARCHAR(50) NOT NULL DEFAULT 'images/profile/default.jpg' AFTER `gender`;";
+if (mysqli_query($con,$sql)) {
+  echo "Column name profile pic created";
+}else{
+  echo mysqli_error($con);
+}
+
+
+
+
 
 include("about.php");
 ?>
