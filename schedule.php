@@ -41,7 +41,7 @@
 							while ($row = mysqli_fetch_assoc($result)) { ?>
 								<tr>
 									<td><?php echo $row['day']; ?></td>
-									<td><?php echo $row['time_from']." - ".$row['time_from']; ?></td>
+									<td><?php echo $row['time_from']." - ".$row['time_to']; ?></td>
 									<td><a class="btn-e" href="book.php?schedule_id=<?php echo $row['schedule_id']; ?>">Book</a></td>
 								</tr>
 
