@@ -1,5 +1,6 @@
 <?php
 include 'master/head.php';
+include 'master/db.php';
 ?>
 <td id="content">
     <h1>About Us</h1>
@@ -19,8 +20,8 @@ include 'master/head.php';
             </tr>
             <?php
             $count=1;
-            $result = mysqli_query("select * from doctors");
-            if (mysql_num_rows($result) > 0) {
+            $result = mysqli_query($con,"select * from doctors");
+            if (mysqli_num_rows($result) > 0) {
                 while ($row = mysql_fetch_assoc($result)) {
                     ?>
                     <tr>
