@@ -8,9 +8,9 @@ $sql = "CREATE TABLE `users` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (mysqli_query($con,$sql)) {
-	echo "Created table name 'users'";
+	echo "Created table name 'users'"."<br>";
 }else{
-	echo "'users' table already exist";
+	echo "'users' table already exist"."<br>";
 }
 
 // Create Departments table
@@ -19,17 +19,17 @@ $sql = "CREATE TABLE `departments` (
 `dept_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (mysqli_query($con,$sql)) {
-	echo "Created table name 'departments'";
+	echo "Created table name 'departments'"."<br>";
 }else{
-	echo "'departments' table already exist";
+	echo "'departments' table already exist"."<br>";
 }
 
 // Create doctors table
 $sql = "CREATE TABLE `doctors` ( `doc_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `doc_name` VARCHAR(50) NOT NULL , `address` TEXT NOT NULL , `ph_no` VARCHAR(20) NOT NULL , `designation` VARCHAR(50) NOT NULL , `dept` INT NOT NULL , `exp` INT NOT NULL , `gender` VARCHAR(10) NOT NULL , PRIMARY KEY (`doc_id`)) ENGINE = InnoDB;";
 if (mysqli_query($con,$sql)) {
-	echo "Created table name 'doctors'";
+	echo "Created table name 'doctors'"."<br>";
 }else{
-	echo "'doctors' table already exist";
+	echo "'doctors' table already exist"."<br>";
 }
 
 // Create patients table
@@ -48,23 +48,34 @@ $sql = "CREATE TABLE `patients` (
   PRIMARY KEY (`patient_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 if (mysqli_query($con,$sql)) {
-	echo "Created table name 'patients'";
+	echo "Created table name 'patients'"."<br>";
 }else{
-	echo "'patients' table already exist";
+	echo "'patients' table already exist"."<br>";
 }
 
 
 // Add profile pic in doctor
 $sql = "ALTER TABLE `doctors` ADD `profile_pic` VARCHAR(50) NOT NULL DEFAULT 'images/profile/default.jpg' AFTER `gender`;";
 if (mysqli_query($con,$sql)) {
-  echo "Column name profile pic created";
+  echo "Column name profile pic created"."<br>";
 }else{
-  echo mysqli_error($con);
+  echo mysqli_error($con)."<br>";
 }
 
+// Schedule table
+$sql = "CREATE TABLE `oapp`.`schedule` ( `schedule_id` INT NOT NULL AUTO_INCREMENT , `doc_id` INT NOT NULL , `day` VARCHAR(10) NOT NULL , `time_from` VARCHAR(10) NOT NULL , `time_to` VARCHAR(10) NOT NULL , PRIMARY KEY (`schedule_id`)) ENGINE = InnoDB;";
+if (mysqli_query($con,$sql)) {
+  echo "Created table name 'schedule'"."<br>";
+}else{
+  echo "'schedule' table already exist"."<br>";
+}
 
-
-
-
-include("about.php");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <div style="background: url(images/about.jpg) no-repeat; background-position: center; background-size: contain; height: 500px;"></div>
+</body>
+</html>

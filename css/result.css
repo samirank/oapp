@@ -28,3 +28,8 @@ a.btn-a{
 	right: 10px;
 	top: 25;
 }
+table#view-form {
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+}
