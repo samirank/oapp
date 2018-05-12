@@ -319,11 +319,11 @@ ul.breadcrumb li a:hover {
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
     background: #0000ff;
-    width: 76px;
-    font-size: 12px;
+    width: 45px;
+    font-size: 10px;
     text-align: center;
     box-sizing: border-box;
-    padding: 5px 11px;
+    padding: 4px 4px;
     color: #fff;
     border: unset;
     border-radius: 20px;
