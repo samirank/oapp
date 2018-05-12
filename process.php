@@ -16,7 +16,14 @@ if(isset($_POST['login_submit'])){
         $_SESSION['log_id']=$row['user_id'];
         $_SESSION['log_uname']=$row['user_name'];
         $_SESSION['log_role']=$row['user_role'];
-        header("location: dashboard.php");
+
+        if (isset($_SESSION['schedule_id'])) {
+            $schedule_id = $_SESSION['schedule_id'];
+            unset($_SESSION['schedule_id']);
+            header("location: book.php?schedule_id=".$schedule_id);
+        }else{
+            header("location: dashboard.php");
+        }
     }else{
         $_SESSION['login_err'] = "Incorrect username / password";
         header("location: login.php");
@@ -103,37 +110,37 @@ if(isset($_POST['patientreg'])){
 
 // View Doctor table action
 if (isset($_POST['doc_view_action'])) {
-     if ($_POST['action']=="schedule") {
-         header("location: manage_schedule.php?doc_id=".$_POST['doc_id']);
-     }
+   if ($_POST['action']=="schedule") {
+       header("location: manage_schedule.php?doc_id=".$_POST['doc_id']);
+   }
 
-     header("location: doc-reg-view.php");
- }
+   header("location: doc-reg-view.php");
+}
 
 //Add new schdeule
- if (isset($_POST['add_schedule'])) {
-     $doc_id = $_POST['doc_id'];
-     $day = $_POST['day'];
-     $time_from =  strtotime($_POST['time_from']);
-     $time_to =  strtotime($_POST['time_to']);
-     $time_from = date("g:i a", $time_from);
-     $time_to = date("g:i a", $time_to);
+if (isset($_POST['add_schedule'])) {
+   $doc_id = $_POST['doc_id'];
+   $day = $_POST['day'];
+   $time_from =  strtotime($_POST['time_from']);
+   $time_to =  strtotime($_POST['time_to']);
+   $time_from = date("g:i a", $time_from);
+   $time_to = date("g:i a", $time_to);
 
-     $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
-     if (mysqli_query($con,$sql)) {
-        $_SESSION['msg']="Schedule added";
-        header("location: manage_schedule.php?doc_id=".$doc_id);
-    } else {
-        die(mysqli_error($con));
-    } 
- }
-
-
+   $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
+   if (mysqli_query($con,$sql)) {
+    $_SESSION['msg']="Schedule added";
+    header("location: manage_schedule.php?doc_id=".$doc_id);
+} else {
+    die(mysqli_error($con));
+} 
+}
 
 
 
 
 
 
- mysqli_close($con);
+
+
+mysqli_close($con);
 ?>
