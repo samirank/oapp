@@ -1,23 +1,6 @@
 <?php
 session_start();
 include ('master/db.php');
-if(isset($_POST["d_submit"])){
-    $dname=$_POST['dname'];
-    $dadd=$_POST['dadd'];
-    $dphno=$_POST['dphno'];
-    $d_desig=$_POST['d_desig'];
-    $d_dept=$_POST['d_dept'];
-    $d_spec=$_POST['d_spec'];
-    $d_exp=$_POST['d_exp'];
-    $d_gen=$_POST['d_gen'];
-
-    $result=mysql_query("INSERT INTO `oapp`.`doctors` (`doc_name`, `address`, `ph_no`, `designation`, `dept`, `specialisation`, `expr`, `gender`) VALUES ('$dname', '$dadd', '$dphno', '$d_desig', '$d_dept', '$d_spec', '$d_exp', '$d_gen')");
-    if($result){
-        echo 'Data Saved Successfully !';
-    }else{
-        echo 'Data Failed !';
-    }
-}
 
 
 
@@ -66,20 +49,19 @@ if (isset($_POST['d_submit'])) {
     $dept = $_POST['d_dept'];
     $exp = $_POST['d_exp'];
     $gender = $_POST['d_gen'];
-    $email = $_POST['email'];
     $password = $_POST['pass'];
 
     mysqli_autocommit($con,false);
     $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`) VALUES ('$uname', 'doctor', '$password')";
     if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
         mysqli_rollback($con);
-        echo mysqli_error($con);
     }
 
-    $sql = "INSERT INTO `doctors` (`user_id`, `doc_name`, `address`, `ph_no`, `designation`, `dept`, `exp`, `gender`) VALUES ('LAST_INSERT_ID', '$name', '$addr', '$phno', '$desig', '$dept', '$exp', '$gender')";
+    $sql = "INSERT INTO `doctors` (`user_id`, `doc_name`, `address`, `ph_no`, `designation`, `dept`, `exp`, `gender`) VALUES (LAST_INSERT_ID(), '$name', '$addr', '$phno', '$desig', '$dept', '$exp', '$gender')";
     if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
         mysqli_rollback($con);
-        echo mysqli_error($con);
     }else{
         mysqli_commit($con);
         $_SESSION['msg'] = "Doctor added successfully";
