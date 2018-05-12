@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -52,7 +53,7 @@
 							</tr>
 							<tr>
 								<td>Mobile number</td>
-								<td><input type="text" name="mobileno"></td>
+								<td><input type="text" name="mobileno" maxlength="10"></td>
 							</tr>
 							<tr>
 								<td>Guardian Name</td>
@@ -60,7 +61,7 @@
 							</tr>
 							<tr>
 								<td>Emergency Contact Number</td>
-								<td><input type="text" name="emcont"></td>
+								<td><input type="text" name="emcont" maxlength="10"></td>
 							</tr>
 							<tr>
 								<td>Gender</td>
