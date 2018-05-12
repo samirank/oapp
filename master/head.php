@@ -1,4 +1,4 @@
-<?php include('session.php') ?>
+<?php include('session.php'); ?>
 <html>
 <head>
     <title>Online Appointment System</title>
