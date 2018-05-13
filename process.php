@@ -16,11 +16,8 @@ if(isset($_POST['login_submit'])){
         $_SESSION['log_id']=$row['user_id'];
         $_SESSION['log_uname']=$row['user_name'];
         $_SESSION['log_role']=$row['user_role'];
-
         if (isset($_SESSION['schedule_id'])) {
-            $schedule_id = $_SESSION['schedule_id'];
-            unset($_SESSION['schedule_id']);
-            header("location: book.php?schedule_id=".$schedule_id);
+            header("location: book.php");
         }else{
             header("location: dashboard.php");
         }
@@ -112,9 +109,9 @@ if(isset($_POST['patientreg'])){
 if (isset($_POST['doc_view_action'])) {
    if ($_POST['action']=="schedule") {
        header("location: manage_schedule.php?doc_id=".$_POST['doc_id']);
+   }else{
+       header("location: doc-reg-view.php");
    }
-
-   header("location: doc-reg-view.php");
 }
 
 //Add new schdeule

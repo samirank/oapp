@@ -70,6 +70,15 @@ if (mysqli_query($con,$sql)) {
   echo "'schedule' table already exist"."<br>";
 }
 
+
+// Bookings Table
+$sql = "CREATE TABLE `oapp`.`bookings` ( `booking_id` INT NOT NULL AUTO_INCREMENT , `schedule_id` INT NOT NULL , `patient_id` INT NOT NULL , `date_of_booking` DATE NOT NULL , `date_of_appointment` DATE NOT NULL , PRIMARY KEY (`booking_id`)) ENGINE = InnoDB;";
+if (mysqli_query($con,$sql)) {
+  echo "Created table name 'bookings'"."<br>";
+}else{
+  echo "'bookings' table already exist"."<br>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

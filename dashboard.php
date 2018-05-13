@@ -3,6 +3,8 @@
 <?php if(isset($_SESSION['msg'])){
 	echo $_SESSION['msg'];
 	unset($_SESSION['msg']);
-} ?>
+}
+?>
+
 </td>
 <?php include('master/foot.php'); ?>
