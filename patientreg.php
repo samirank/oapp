@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start();
+if(isset($_SESSION['log_id'])){
+	header("location: dashboard.php");
+}
+?>
 <html>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">

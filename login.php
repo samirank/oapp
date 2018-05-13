@@ -41,6 +41,7 @@ if(isset($_SESSION['log_id'])){
 								<button type="submit" name=login_submit>Login</button>
 							</form>
 						</div>
+						Not a member? <a href="patientreg.php">Click here to sign up.</a>
 					</div>
 				</td>
 			</tr>
