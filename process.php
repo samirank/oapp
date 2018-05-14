@@ -119,15 +119,6 @@ if(isset($_POST['patientreg'])){
 }
 
 
-// View Doctor table action
-    if (isset($_POST['doc_view_action'])) {
-     if ($_POST['action']=="schedule") {
-         header("location: manage_schedule.php?doc_id=".$_POST['doc_id']);
-     }else{
-         header("location: doc-reg-view.php");
-     }
- }
-
 //Add new schdeule
  if (isset($_POST['add_schedule'])) {
      $doc_id = $_POST['doc_id'];

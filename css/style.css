@@ -42,6 +42,9 @@ table{
     color: #fff;
     border: 1px solid #333;
 }
+#view-form_length select {
+    width: unset;
+}
 #header{
     height: 180px;
     padding: 10px 15px;
@@ -350,4 +353,29 @@ table#view-form td{
     text-align: center;
     padding: 10px 15px;
     border: unset;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+}
+
+#view-form a{
+  display: block;
+  width: auto;
+  align-self: center;
+  color: #6c5ce7;
+  border: unset;
+  text-decoration: underline;
+  padding: 5px 0px;
+}
+table#view-form tr:hover {
+    background-color: #eee;
+}
+#view-form_length select{
+    margin-bottom: 8px;
+    padding: 5px 10px;
+}
+#view-form_filter input[type="search"]{
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: arial;
 }

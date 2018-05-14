@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Online Appointment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700" rel="stylesheet">
     <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
 </head>
 <body>
     <div id="container">
