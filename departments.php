@@ -3,10 +3,10 @@
 <td class="content">
 	<ul class="breadcrumb">
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="departments.php">Departments</a></li>
+        <li>Departments</li>
     </ul>
     <div>
-    	<a id="add_dept_btn" class="btn-a" href="add_dept.php">Add Department</a>
+    	<a id="btn-lg" class="btn-a" href="add_dept.php">Add Department</a>
     </div>
     <table id="view-form" cellspacing="0">
             <tr>

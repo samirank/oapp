@@ -36,8 +36,8 @@ include 'master/db.php';
                             <td><?php echo $row["exp"]; ?> years</td>
                             <form action="process.php" method="POST"></form>
                             <td>
-                                <a style="height: 10px;" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">Manage Schedule</a>
-                                <a href="">Edit</a>
+                                <a class="doc-anchor" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">Manage Schedule</a>
+                                <a class="doc-anchor" href="">View Profile</a>
                             </td>
                         </tr>
                         <?php

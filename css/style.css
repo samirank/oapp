@@ -243,6 +243,7 @@ ul.breadcrumb {
 ul.breadcrumb li {
     display: inline;
     font-size: 18px;
+    color: #888;
 }
 
 ul.breadcrumb li+li:before {
@@ -335,7 +336,7 @@ ul.breadcrumb li a:hover {
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
 }
-a#add_dept_btn {
+a#btn-lg {
     width: 140px;
     padding: 10px;
     margin-bottom: 20px;
@@ -357,7 +358,7 @@ table#view-form td{
     border-bottom: 1px solid #eee;
 }
 
-#view-form a{
+a.doc-anchor{
   display: block;
   width: auto;
   align-self: center;
