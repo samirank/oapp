@@ -149,6 +149,17 @@ if (isset($_POST['cancel_appointment'])) {
     }
 }
 
+// edit department name
+if (isset($_POST['edit_dept_name'])) {
+    $dept_id = $_POST['dept_id'];
+    $name = $_POST['new_name'];
+    $sql = "UPDATE `departments` SET `dept_name` = '$name' WHERE `departments`.`dept_id` = '$dept_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: departments.php");
+    }else{
+        die(mysql_error($con));
+    }
+}
 
 
 

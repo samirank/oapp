@@ -211,21 +211,21 @@ td#footer{
 
 /*Logout Button*/
 a#logout-btn{
-   display: block;
-   background: #fd79a8;
-   background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-   background: linear-gradient(to right, #e84393e3, #fd79a8);
-   width: 86px;
-   height: unset;
-   font-size: unset;
-   font-weight: normal;
-   text-align: center;
-   margin: -7px 0px 0px 10px;
-   box-sizing: border-box;
-   padding: 9px 15px;
-   color: #fff;
-   border-radius: 37px;
-   box-shadow: 8px 8px 34px 0px #00000029;
+ display: block;
+ background: #fd79a8;
+ background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+ background: linear-gradient(to right, #e84393e3, #fd79a8);
+ width: 86px;
+ height: unset;
+ font-size: unset;
+ font-weight: normal;
+ text-align: center;
+ margin: -7px 0px 0px 10px;
+ box-sizing: border-box;
+ padding: 9px 15px;
+ color: #fff;
+ border-radius: 37px;
+ box-shadow: 8px 8px 34px 0px #00000029;
 }
 a#logout-btn:hover{
     background: #e84393;
@@ -303,7 +303,7 @@ ul.breadcrumb li a:hover {
     background: #e84393;
 }
 .btn-d{
-    display: block;
+    display: inline-block;
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
     background: #d24141;
@@ -329,7 +329,7 @@ button.btn-d:disabled {
     cursor: default;
 }
 .btn-e{
-    display: block;
+    display: inline-block;
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
     background: #6c5ce7;
@@ -337,7 +337,7 @@ button.btn-d:disabled {
     font-size: 10px;
     text-align: center;
     box-sizing: border-box;
-    padding: 4px 4px;
+    padding: 5px;
     color: #fff;
     border: unset;
     border-radius: 20px;
@@ -389,4 +389,20 @@ table#view-form tr:hover {
     padding: 5px 10px;
     border-radius: 4px;
     font-family: arial;
+}
+
+.edit-dept {
+    display: flex;
+    position: relative;
+    padding: 20px 10px;
+    background-color: #eee;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+.edit-dept form{
+    display: inline;
+    margin-left: 70px;
+    position: absolute;
+    right: 10px;
+    top: 23%;
 }
