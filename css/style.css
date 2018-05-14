@@ -306,18 +306,27 @@ ul.breadcrumb li a:hover {
     display: block;
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: #808080;
+    background: #d24141;
     width: 45px;
     font-size: 10px;
     text-align: center;
     box-sizing: border-box;
-    padding: 4px 4px;
+    padding: 5px;
     color: #fff;
     border: unset;
     border-radius: 20px;
     border-color: #fff0;
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
+    cursor: pointer;
+}
+input.btn-d:disabled {
+    background-color: #999;
+    cursor: default;
+}
+button.btn-d:disabled {
+    background-color: #999;
+    cursor: default;
 }
 .btn-e{
     display: block;
@@ -335,6 +344,7 @@ ul.breadcrumb li a:hover {
     border-color: #fff0;
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
+    cursor: pointer;
 }
 a#btn-lg {
     width: 140px;

@@ -138,7 +138,16 @@ if(isset($_POST['patientreg'])){
 }
 
 
-
+// Cancel appointment
+if (isset($_POST['cancel_appointment'])) {
+    $booking_id = $_POST['booking_id'];
+    $sql = "UPDATE `bookings` SET `status` = 'cancelled' WHERE `bookings`.`booking_id` = '$booking_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: bookings.php");
+    }else{
+        die(mysql_error($con));
+    }
+}
 
 
 

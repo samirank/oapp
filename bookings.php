@@ -15,19 +15,20 @@
                 <th>Department</th>
                 <th>Date of booking</th>
                 <th>Date of appointment</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $count=1;
             if ($_SESSION['log_role']=="admin") {
-                $sql = "SELECT b.booking_id, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id";
+                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id";
             }
             if ($_SESSION['log_role']=="patient") {
-                $sql = "SELECT b.booking_id, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE p.user_id = {$_SESSION['log_id']}";
+                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE p.user_id = {$_SESSION['log_id']}";
             }
             if ($_SESSION['log_role']=="doctor") {
-                $sql = "SELECT b.booking_id, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE d.user_id = {$_SESSION['log_id']}";
+                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE d.user_id = {$_SESSION['log_id']}";
             }
             $result = mysqli_query($con,$sql);
             if (mysqli_num_rows($result) > 0) {
@@ -41,15 +42,23 @@
                         <td><?php echo $row["dept_name"] ?></td>
                         <td><?php echo $row["date_of_booking"] ?></td>
                         <td><?php echo $row["date_of_appointment"] ?></td>
-                    </tr>
-                    <?php
-                    $count++;
-                }
-            } else {
-                echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';
-            }
-            ?>
-        </tbody>
-    </table>
-</td>
-<?php include('master/foot.php'); ?>
+                        <form action="process.php" method="POST">
+                            <?php if ($_SESSION['log_role']=='patient') { ?>
+                                <td>
+                                    <input type="text" name="booking_id" value="<?php echo $row['booking_id']; ?>" hidden>
+                                    <input class="btn-d" type="submit" name="cancel_appointment" value="Cancel" <?php if ($row['status'] != "active") { echo "disabled"; } ?>>
+                                    <?php } ?>
+                                </td>
+                                </form>
+                            </tr>
+                            <?php
+                            $count++;
+                        }
+                    } else {
+                        echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </td>
+        <?php include('master/foot.php'); ?>
