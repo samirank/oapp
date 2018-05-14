@@ -83,7 +83,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2" id="footer">&copy; Samiran Kakoty 2018</td>
+									<td colspan="2" id="footer"></td>
 								</tr>
 							</table>
 						</div>

@@ -3,6 +3,13 @@ include 'master/head.php';
 include 'master/db.php';
 ?>
 <td id="content">
+    <ul class="breadcrumb">
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li>Doctors</li>
+    </ul>
+    <div>
+        <a id="btn-lg" class="btn-a" href="doc_reg.php">Add Doctor</a>
+    </div>
     <form action="process.php" method="post">
         <table id="view-form" cellspacing="0">
             <thead>

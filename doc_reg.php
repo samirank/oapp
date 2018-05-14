@@ -3,7 +3,8 @@
 <td id="content">
     <ul class="breadcrumb">
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="doc-reg.php">Doctor Registration</a></li>
+        <li><a href="doctors.php">Doctors</a></li>
+        <li>Doctor Registration</li>
     </ul>
     <form action="process.php" method="post">
         <table id="tab-form">
