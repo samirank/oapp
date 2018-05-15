@@ -7,9 +7,6 @@ include 'master/db.php';
         <li><a href="dashboard.php">Dashboard</a></li>
         <li>Patients</li>
     </ul>
-    <div>
-        <a class="btn-a btn-lg" href="doc_reg.php">Add Doctor</a>
-    </div>
     <form action="process.php" method="post">
         <table id="view-form" cellspacing="0">
             <thead>

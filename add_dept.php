@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<td><label for="dept_name">Department Name :</label></td>
-					<td><input type="text" name="dept_name"></td>
+					<td><input type="text" name="dept_name" autofocus></td>
 				</tr>
 				<tr>
 					<td></td>
