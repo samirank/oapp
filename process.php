@@ -145,7 +145,7 @@ if (isset($_POST['cancel_appointment'])) {
     if (mysqli_query($con,$sql)) {
         header("location: bookings.php");
     }else{
-        die(mysql_error($con));
+        die(mysqli_error($con));
     }
 }
 
@@ -157,12 +157,80 @@ if (isset($_POST['edit_dept_name'])) {
     if (mysqli_query($con,$sql)) {
         header("location: departments.php");
     }else{
-        die(mysql_error($con));
+        die(mysqli_error($con));
+    }
+}
+
+// Change password
+if (isset($_POST['change_pass'])) {
+    $user_id =  $_POST['user_id'];
+    $pass = $_POST['pass'];
+
+    $sql = "UPDATE `users` SET `password` = '$pass' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Password Changed";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+
+// Edit Doctor profile
+if (isset($_POST['change_doc_profile'])) {
+    print_r($_POST);
+    $dname = $_POST['dname'];
+    $uname = $_POST['uname'];
+    $dadd = $_POST['dadd'];
+    $dphno = $_POST['dphno'];
+    $d_desig = $_POST['d_desig'];
+    $d_exp = $_POST['d_exp'];
+    $d_gen = $_POST['d_gen'];
+    $user_id = $_POST['user_id'];
+    
+    $sql = "UPDATE `doctors` SET `doc_name`='$dname',`address`='$dadd',`ph_no`='$dphno',`designation`='$d_desig',`exp`='$d_exp',`gender`='$d_gen' WHERE user_id = '$user_id'";
+
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Profile Updated";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+
+// Suspend Doctor
+if (isset($_GET['suspend_doc'])) {
+    $user_id = $_GET['suspend_doc'];
+    $sql = "UPDATE `users` SET `status` = 'suspended' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Account suspended";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+// Activate account
+if (isset($_GET['activate'])) {
+    $user_id = $_GET['activate'];
+    $sql = "UPDATE `users` SET `status` = 'active' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Account activated";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
     }
 }
 
 
-
+// Delete Schedule
+if (isset($_GET['delete_schedule'])) {
+    $schedule_id = $_GET['delete_schedule'];
+    $sql = "UPDATE `schedule` SET `status` = 'deleted' WHERE `schedule_id` = '$schedule_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: manage_schedule.php?doc_id={$_GET['doc_id']}");
+    }else{
+         die(mysqli_error($con));
+    }
+}
 
 mysqli_close($con);
 ?>

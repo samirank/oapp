@@ -15,7 +15,7 @@
                 <th>Department</th>
                 <th>Date of booking</th>
                 <th>Date of appointment</th>
-                <th>Action</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
                             <?php if ($_SESSION['log_role']=='patient') { ?>
                                 <td>
                                     <input type="text" name="booking_id" value="<?php echo $row['booking_id']; ?>" hidden>
-                                    <input class="btn-d" type="submit" name="cancel_appointment" value="Cancel" <?php if ($row['status'] != "active") { echo "disabled"; } ?>>
+                                    <button class="btn-d" style="width: 55px;" type="submit" name="cancel_appointment" <?php if ($row['status'] != "active") { echo "disabled"; } ?>><?php if ($row['status'] == "active") { echo "cancel"; }else{ echo $row['status'];} ?></button>
                                     <?php } ?>
                                 </td>
                                 </form>

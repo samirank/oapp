@@ -346,10 +346,11 @@ button.btn-d:disabled {
     outline-color: #fff0;
     cursor: pointer;
 }
-a#btn-lg {
+.btn-lg {
     width: 140px;
     padding: 10px;
     margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 /*Error Message*/
@@ -405,4 +406,36 @@ table#view-form tr:hover {
     position: absolute;
     right: 10px;
     top: 23%;
+}
+
+/*Profile Picture*/
+.profile-pic {
+    position: relative;
+}
+.profile-pic img {
+    position: absolute;
+    width: 200px;
+    right: 16%;
+    top: 38px;
+}
+.profile-pic a {
+    position: absolute;
+    width: 190px;
+    right: 17%;
+    top: 250px;
+}
+
+/*Change Password*/
+.change-pass{
+    display: flex;
+    background-color: #beceea;
+    padding: 12px 5px;
+}
+.change-pass input{
+    display: inline-block;
+    width: 178px;
+}
+.change-pass button{
+    display: inline-block;
+    width: unset;
 }

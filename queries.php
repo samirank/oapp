@@ -80,6 +80,22 @@ if (mysqli_query($con,$sql)) {
   $flag = 1;
 }
 
+// Added status column to  users table
+$sql = "ALTER TABLE `users` ADD `status` VARCHAR(20) NOT NULL DEFAULT 'active' AFTER `password`";
+if (mysqli_query($con,$sql)) {
+  echo "Added status column to 'users' table"."<br>";
+  $flag = 1;
+}
+
+
+// Added Status to schedule table
+$sql = "ALTER TABLE `schedule`  ADD `status` VARCHAR(10) NOT NULL DEFAULT 'active'  AFTER `time_to`";
+if (mysqli_query($con,$sql)) {
+  echo "Added status column to 'schedule' table"."<br>";
+  $flag = 1;
+}
+
+
 if ($flag == 0) {
   echo "Nothing new to add";
 }

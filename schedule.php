@@ -35,7 +35,7 @@
 							<th>Action</th>
 						</tr>
 						<?php
-						$sql = "SELECT * FROM schedule WHERE doc_id = '{$_GET['doc_id']}'";
+						$sql = "SELECT s.day, s.time_from, s.time_to, s.schedule_id FROM schedule s JOIN doctors d ON s.doc_id=d.doc_id JOIN users u ON d.user_id=u.user_id WHERE s.doc_id = '{$_GET['doc_id']}' AND s.status = 'active' AND u.status= 'active';";
 						$result = mysqli_query($con,$sql);
 						if (mysqli_num_rows($result) > 0) {
 							while ($row = mysqli_fetch_assoc($result)) { ?>

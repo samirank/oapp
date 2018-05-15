@@ -8,7 +8,7 @@ include 'master/db.php';
         <li>Doctors</li>
     </ul>
     <div>
-        <a id="btn-lg" class="btn-a" href="doc_reg.php">Add Doctor</a>
+        <a class="btn-a btn-lg" href="doc_reg.php">Add Doctor</a>
     </div>
     <form action="process.php" method="post">
         <table id="view-form" cellspacing="0">
@@ -21,14 +21,14 @@ include 'master/db.php';
                     <th>Phone No</th>
                     <th>Designation</th>
                     <th>Department</th>
-                    <th>Experience</th>                
+                    <th>Status</th>                
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $count=1;
-                $result = mysqli_query($con,"select * from doctors");
+                $result = mysqli_query($con,"SELECT * FROM doctors JOIN departments ON doctors.dept=departments.dept_id JOIN users ON doctors.user_id=users.user_id");
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         ?>
@@ -39,12 +39,12 @@ include 'master/db.php';
                             <td><?php echo $row["address"]; ?></td>
                             <td><?php echo $row["ph_no"]; ?></td>
                             <td><?php echo $row["designation"]; ?></td>
-                            <td><?php echo $row["dept"]; ?></td>
-                            <td><?php echo $row["exp"]; ?> years</td>
+                            <td><?php echo $row["dept_name"]; ?></td>
+                            <td><?php echo $row["status"]; ?></td>
                             <form action="process.php" method="POST"></form>
                             <td>
                                 <a class="doc-anchor" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">Manage Schedule</a>
-                                <a class="doc-anchor" href="">View Profile</a>
+                                <a class="doc-anchor" href="profile.php?id=<?php echo $row['user_id']; ?>">View Profile</a>
                             </td>
                         </tr>
                         <?php
