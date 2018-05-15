@@ -5,7 +5,7 @@ include 'master/db.php';
 <td id="content">
     <ul class="breadcrumb">
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li>Doctors</li>
+        <li>Patients</li>
     </ul>
     <div>
         <a class="btn-a btn-lg" href="doc_reg.php">Add Doctor</a>
@@ -40,7 +40,7 @@ include 'master/db.php';
                             <td><?php echo $row["status"]; ?></td>
                             <form action="process.php" method="POST"></form>
                             <td>
-                                <a class="doc-anchor" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">View Bookings</a>
+                                <a class="doc-anchor" href="bookings.php?id=<?php echo $row['user_id']; ?>">View Bookings</a>
                                 <a class="doc-anchor" href="profile.php?id=<?php echo $row['user_id']; ?>">View Profile</a>
                             </td>
                         </tr>
