@@ -53,7 +53,7 @@ if (isset($_POST['d_submit'])) {
     $password = $_POST['pass'];
 
     mysqli_autocommit($con,false);
-    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`) VALUES ('$uname', 'doctor', '$password')";
+    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'doctor', '$password', now())";
     if(!mysqli_query($con,$sql)){
         echo (mysqli_error($con));
         mysqli_rollback($con);
@@ -84,7 +84,7 @@ if(isset($_POST['patientreg'])){
     $email=$_POST["email_id"];
     $password=$_POST["pass"];
 
-    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`) VALUES ('$uname', 'patient', '$password')";
+    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'patient', '$password', now())";
     mysqli_autocommit($con,false);
     if(!mysqli_query($con, $sql)){
         echo mysqli_error($con);

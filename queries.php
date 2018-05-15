@@ -3,11 +3,10 @@
 $flag = 0;
 // Create users table
 $sql = "CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(50) NOT NULL,
   `user_role` varchar(10) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+  `password` varchar(100) NOT NULL, PRIMARY KEY (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'users'"."<br>";
   $flag = 1;
@@ -15,9 +14,8 @@ if (mysqli_query($con,$sql)) {
 
 // Create Departments table
 $sql = "CREATE TABLE `departments` (
-`dept_id` int(11) NOT NULL,
-`dept_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+`dept_id` int(11) NOT NULL AUTO_INCREMENT,
+`dept_name` varchar(50) NOT NULL, PRIMARY KEY (`dept_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'departments'"."<br>";
   $flag = 1;
@@ -95,6 +93,12 @@ if (mysqli_query($con,$sql)) {
   $flag = 1;
 }
 
+// Added date of registration to users table
+$sql = "ALTER TABLE `users` ADD `date_of_reg` DATE NULL DEFAULT NULL AFTER `password`";
+if (mysqli_query($con,$sql)) {
+  echo "Added date of registration to 'users' table"."<br>";
+  $flag = 1;
+}
 
 if ($flag == 0) {
   echo "Nothing new to add";
