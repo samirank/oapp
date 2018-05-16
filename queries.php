@@ -20,6 +20,13 @@ if (mysqli_query($con,$sql)) {
 	echo "Created table name 'departments'"."<br>";
   $flag = 1;
 }
+$sql = "CREATE TABLE `lab_test` (
+`lab_test_id` int(10) NOT NULL AUTO_INCREMENT,
+`lab_test` varchar(100) NOT NULL, PRIMARY KEY (`lab_test_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+if (mysqli_query($con,$sql)) {
+  echo "Created table name 'lab_test'"."<br>";
+  $flag = 1;
+}
 
 // Create doctors table
 $sql = "CREATE TABLE `doctors` ( `doc_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `doc_name` VARCHAR(50) NOT NULL , `address` TEXT NOT NULL , `ph_no` VARCHAR(20) NOT NULL , `designation` VARCHAR(50) NOT NULL , `dept` INT NOT NULL , `exp` INT NOT NULL , `gender` VARCHAR(10) NOT NULL , PRIMARY KEY (`doc_id`)) ENGINE = InnoDB;";
