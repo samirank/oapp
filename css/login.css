@@ -29,7 +29,7 @@ td#content{
 }
 .login-box form{
 	position: absolute;
-	top: 25%;
+	top: 20%;
 }
 .login-box form>input{
 	margin-bottom: 30px;
@@ -73,5 +73,22 @@ td#content{
 	display: block;
 	margin-top: -25px;
 	padding: 13px;
+	color: #fff;
+}
+.link-to-reg{
+	position: absolute;
+	bottom: 15px;
+	left: 26%;
+	color: #fff;
+}
+.link-to-reg a{
+	display: inline;
+	color: #6c5ce7;
+	background-color: #fff;
+	width: 56px;
+	font-weight: bold;
+}
+.link-to-reg a:hover{
+	background-color: #a29bfe;
 	color: #fff;
 }

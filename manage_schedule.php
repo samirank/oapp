@@ -2,7 +2,7 @@
 <?php include('master/db.php'); ?>
 <td id="content">
 	<div>
-		<a id="add_dept_btn" class="btn-a" href="add_schedule.php?doc_id=<?php echo $_GET['doc_id']; ?>">Add Schedule</a>
+		<a class="btn-a btn-lg" href="add_schedule.php?doc_id=<?php echo $_GET['doc_id']; ?>">Add Schedule</a>
 	</div>
 	<table id="view-form" cellspacing="0">
 		<tr>
@@ -22,7 +22,7 @@
 			<th>Action</th>
 		</tr>
 		<?php
-		$sql = "SELECT * FROM schedule WHERE doc_id = '{$_GET['doc_id']}'";
+		$sql = "SELECT * FROM schedule WHERE doc_id = '{$_GET['doc_id']}' AND status='active'";
 		$result = mysqli_query($con,$sql);
 		if (mysqli_num_rows($result) > 0) {
 			while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -30,7 +30,7 @@
 					<td><?php echo $row['schedule_id']; ?></td>
 					<td><?php echo $row['day']; ?></td>
 					<td><?php echo $row['time_from']." - ".$row['time_to']; ?></td>
-					<td><a href="" class="btn-d">Delete</a></td>
+					<td><a href="process.php?delete_schedule=<?php echo $row['schedule_id']; ?>&doc_id=<?php echo $_GET['doc_id'] ?>" class="btn-d">Delete</a></td>
 				</tr>
 
 				<?php }}

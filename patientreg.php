@@ -64,7 +64,7 @@ if(isset($_SESSION['log_id'])){
 								<td><input type="text" name="guardian"></td>
 							</tr>
 							<tr>
-								<td>Emergency Contact Number</td>
+								<td>Emergency contact number</td>
 								<td><input type="text" name="emcont" maxlength="10"></td>
 							</tr>
 							<tr>

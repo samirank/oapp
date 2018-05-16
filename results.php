@@ -37,7 +37,7 @@
 
 							<!-- List of Doctors -->
 							<?php
-							$sql = "SELECT * FROM doctors JOIN departments ON doctors.dept=departments.dept_id WHERE doctors.dept = '{$_POST['symptom']}'";
+							$sql = "SELECT * FROM doctors JOIN departments ON doctors.dept=departments.dept_id JOIN users ON doctors.user_id= users.user_id WHERE doctors.dept = '{$_POST['symptom']}' AND users.status='active'";
 							$result = mysqli_query($con,$sql);
 							if (mysqli_num_rows($result) > 0) {
 								while ($row = mysqli_fetch_assoc($result)) { ?>

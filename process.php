@@ -63,7 +63,7 @@ if (isset($_POST['d_submit'])) {
     $password = $_POST['pass'];
 
     mysqli_autocommit($con,false);
-    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`) VALUES ('$uname', 'doctor', '$password')";
+    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'doctor', '$password', now())";
     if(!mysqli_query($con,$sql)){
         echo (mysqli_error($con));
         mysqli_rollback($con);
@@ -94,7 +94,7 @@ if(isset($_POST['patientreg'])){
     $email=$_POST["email_id"];
     $password=$_POST["pass"];
 
-    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`) VALUES ('$uname', 'patient', '$password')";
+    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'patient', '$password', now())";
     mysqli_autocommit($con,false);
     if(!mysqli_query($con, $sql)){
         echo mysqli_error($con);
@@ -129,15 +129,6 @@ if(isset($_POST['patientreg'])){
 }
 
 
-// View Doctor table action
-    if (isset($_POST['doc_view_action'])) {
-     if ($_POST['action']=="schedule") {
-         header("location: manage_schedule.php?doc_id=".$_POST['doc_id']);
-     }else{
-         header("location: doc-reg-view.php");
-     }
- }
-
 //Add new schdeule
  if (isset($_POST['add_schedule'])) {
      $doc_id = $_POST['doc_id'];
@@ -157,11 +148,99 @@ if(isset($_POST['patientreg'])){
 }
 
 
+// Cancel appointment
+if (isset($_POST['cancel_appointment'])) {
+    $booking_id = $_POST['booking_id'];
+    $sql = "UPDATE `bookings` SET `status` = 'cancelled' WHERE `bookings`.`booking_id` = '$booking_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: bookings.php");
+    }else{
+        die(mysqli_error($con));
+    }
+}
+
+// edit department name
+if (isset($_POST['edit_dept_name'])) {
+    $dept_id = $_POST['dept_id'];
+    $name = $_POST['new_name'];
+    $sql = "UPDATE `departments` SET `dept_name` = '$name' WHERE `departments`.`dept_id` = '$dept_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: departments.php");
+    }else{
+        die(mysqli_error($con));
+    }
+}
+
+// Change password
+if (isset($_POST['change_pass'])) {
+    $user_id =  $_POST['user_id'];
+    $pass = $_POST['pass'];
+
+    $sql = "UPDATE `users` SET `password` = '$pass' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Password Changed";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+
+// Edit Doctor profile
+if (isset($_POST['change_doc_profile'])) {
+    print_r($_POST);
+    $dname = $_POST['dname'];
+    $uname = $_POST['uname'];
+    $dadd = $_POST['dadd'];
+    $dphno = $_POST['dphno'];
+    $d_desig = $_POST['d_desig'];
+    $d_exp = $_POST['d_exp'];
+    $d_gen = $_POST['d_gen'];
+    $user_id = $_POST['user_id'];
+    
+    $sql = "UPDATE `doctors` SET `doc_name`='$dname',`address`='$dadd',`ph_no`='$dphno',`designation`='$d_desig',`exp`='$d_exp',`gender`='$d_gen' WHERE user_id = '$user_id'";
+
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Profile Updated";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+
+// Suspend Doctor
+if (isset($_GET['suspend_doc'])) {
+    $user_id = $_GET['suspend_doc'];
+    $sql = "UPDATE `users` SET `status` = 'suspended' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Account suspended";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
+// Activate account
+if (isset($_GET['activate'])) {
+    $user_id = $_GET['activate'];
+    $sql = "UPDATE `users` SET `status` = 'active' WHERE `users`.`user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Account activated";
+        header("location: profile.php?id=$user_id");
+    }else{
+         die(mysqli_error($con));
+    }
+}
 
 
-
-
-
+// Delete Schedule
+if (isset($_GET['delete_schedule'])) {
+    $schedule_id = $_GET['delete_schedule'];
+    $sql = "UPDATE `schedule` SET `status` = 'deleted' WHERE `schedule_id` = '$schedule_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: manage_schedule.php?doc_id={$_GET['doc_id']}");
+    }else{
+         die(mysqli_error($con));
+    }
+}
 
 mysqli_close($con);
 ?>

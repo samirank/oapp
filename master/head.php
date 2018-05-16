@@ -4,6 +4,7 @@
     <title>Online Appointment System</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700" rel="stylesheet">
     <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
 </head>
 <body>
     <div id="container">
@@ -31,19 +32,28 @@
 
                     	<!-- Admin Pane -->
                     	<?php if($_SESSION['log_role'] == "admin"){ ?>
-                    	<li><a href="dashboard.php">Dashboard</a></li>
-                    	<li><a href="departments.php">Departments</a></li>
-                        <li><a href="doc_reg.php">Doctor Registration</a></li>
-                        <li><a href="doc-reg-view.php">View Doctor Details</a></li>
-                        <li class="menu-end-item"><a href="lab.php">Laboratory</a></li>
-                        <?php } ?>
+                           <li><a href="dashboard.php">Dashboard</a></li>
+                           <li><a href="departments.php">Departments</a></li>
+                           <li><a href="doctors.php">Doctors</a></li>
+                           <li><a href="bookings.php">Bookings</a></li>
+                           <li><a href="patients.php">Patients</a></li>
+                           <li class="menu-end-item"><a href="lab.php">Laboratory</a></li>
+                           <?php } ?>
 
 
-                        <!-- patient Pane -->
-                        <?php if($_SESSION['log_role'] == "patient"){  ?>
-                        <li><a href="dashboard.php">Dashboard</a></li>
-                        <li><a href="bookings.php">Bookings</a></li>
-                        <li><a href="profile.php">My profile</a></li>
-                        <?php } ?>
-                    </ul>
-                </td>
+                           <!-- patient Pane -->
+                           <?php if($_SESSION['log_role'] == "patient"){  ?>
+                            <li><a href="dashboard.php">Dashboard</a></li>
+                            <li><a href="bookings.php">Bookings</a></li>
+                            <li><a href="profile.php">My profile</a></li>
+                            <?php } ?>
+
+
+                            <!-- Doctor Pane -->
+                            <?php if($_SESSION['log_role'] == "doctor"){  ?>
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="bookings.php">Bookings</a></li>
+                                <li><a href="profile.php">My profile</a></li>
+                                <?php } ?>
+                            </ul>
+                        </td>

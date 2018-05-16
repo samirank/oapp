@@ -42,6 +42,9 @@ table{
     color: #fff;
     border: 1px solid #333;
 }
+#view-form_length select {
+    width: unset;
+}
 #header{
     height: 180px;
     padding: 10px 15px;
@@ -208,21 +211,21 @@ td#footer{
 
 /*Logout Button*/
 a#logout-btn{
-   display: block;
-   background: #fd79a8;
-   background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-   background: linear-gradient(to right, #e84393e3, #fd79a8);
-   width: 86px;
-   height: unset;
-   font-size: unset;
-   font-weight: normal;
-   text-align: center;
-   margin: -7px 0px 0px 10px;
-   box-sizing: border-box;
-   padding: 9px 15px;
-   color: #fff;
-   border-radius: 37px;
-   box-shadow: 8px 8px 34px 0px #00000029;
+ display: block;
+ background: #fd79a8;
+ background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+ background: linear-gradient(to right, #e84393e3, #fd79a8);
+ width: 86px;
+ height: unset;
+ font-size: unset;
+ font-weight: normal;
+ text-align: center;
+ margin: -7px 0px 0px 10px;
+ box-sizing: border-box;
+ padding: 9px 15px;
+ color: #fff;
+ border-radius: 37px;
+ box-shadow: 8px 8px 34px 0px #00000029;
 }
 a#logout-btn:hover{
     background: #e84393;
@@ -240,6 +243,7 @@ ul.breadcrumb {
 ul.breadcrumb li {
     display: inline;
     font-size: 18px;
+    color: #888;
 }
 
 ul.breadcrumb li+li:before {
@@ -299,24 +303,33 @@ ul.breadcrumb li a:hover {
     background: #e84393;
 }
 .btn-d{
-    display: block;
+    display: inline-block;
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: #808080;
+    background: #d24141;
     width: 45px;
     font-size: 10px;
     text-align: center;
     box-sizing: border-box;
-    padding: 4px 4px;
+    padding: 5px;
     color: #fff;
     border: unset;
     border-radius: 20px;
     border-color: #fff0;
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
+    cursor: pointer;
+}
+input.btn-d:disabled {
+    background-color: #999;
+    cursor: default;
+}
+button.btn-d:disabled {
+    background-color: #999;
+    cursor: default;
 }
 .btn-e{
-    display: block;
+    display: inline-block;
     background: #fd79a8;
     background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
     background: #6c5ce7;
@@ -324,18 +337,20 @@ ul.breadcrumb li a:hover {
     font-size: 10px;
     text-align: center;
     box-sizing: border-box;
-    padding: 4px 4px;
+    padding: 5px;
     color: #fff;
     border: unset;
     border-radius: 20px;
     border-color: #fff0;
     box-shadow: 8px 8px 34px 0px #00000029;
     outline-color: #fff0;
+    cursor: pointer;
 }
-a#add_dept_btn {
+.btn-lg {
     width: 140px;
     padding: 10px;
     margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 /*Error Message*/
@@ -350,4 +365,77 @@ table#view-form td{
     text-align: center;
     padding: 10px 15px;
     border: unset;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+}
+
+a.doc-anchor{
+  display: block;
+  width: auto;
+  align-self: center;
+  color: #6c5ce7;
+  border: unset;
+  text-decoration: underline;
+  padding: 5px 0px;
+}
+table#view-form tr:hover {
+    background-color: #eee;
+}
+#view-form_length select{
+    margin-bottom: 8px;
+    padding: 5px 10px;
+}
+#view-form_filter input[type="search"]{
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: arial;
+}
+
+.edit-dept {
+    display: flex;
+    position: relative;
+    padding: 20px 10px;
+    background-color: #eee;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+.edit-dept form{
+    display: inline;
+    margin-left: 70px;
+    position: absolute;
+    right: 10px;
+    top: 23%;
+}
+
+/*Profile Picture*/
+.profile-pic {
+    position: relative;
+}
+.profile-pic img {
+    position: absolute;
+    width: 200px;
+    right: 16%;
+    top: 38px;
+}
+.profile-pic a {
+    position: absolute;
+    width: 190px;
+    right: 17%;
+    top: 250px;
+}
+
+/*Change Password*/
+.change-pass{
+    display: flex;
+    background-color: #beceea;
+    padding: 12px 5px;
+}
+.change-pass input{
+    display: inline-block;
+    width: 178px;
+}
+.change-pass button{
+    display: inline-block;
+    width: unset;
 }
