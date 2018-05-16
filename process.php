@@ -170,6 +170,8 @@ if (isset($_POST['edit_dept_name'])) {
         die(mysqli_error($con));
     }
 }
+
+//Edit test name
 if (isset($_POST['edit_lab_name'])) {
     $labtest_id = $_POST['lab_test_id'];
     $name = $_POST['new_name'];
@@ -228,6 +230,8 @@ if (isset($_GET['suspend_doc'])) {
          die(mysqli_error($con));
     }
 }
+
+
 // Activate account
 if (isset($_GET['activate'])) {
     $user_id = $_GET['activate'];
