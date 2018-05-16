@@ -39,6 +39,16 @@ if (isset($_POST['add_dept'])) {
         die(mysqli_error($con));
     }
 }
+if (isset($_POST['add_lab'])) {
+    $dept_name = $_POST['dept_name'];
+    $sql = "INSERT INTO `departments` (`dept_name`) VALUES ('$dept_name')";
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg']="Department added successfully";
+        header("location: add_dept.php");
+    } else {
+        die(mysqli_error($con));
+    }
+}
 
 //Add Doctor
 if (isset($_POST['d_submit'])) {
