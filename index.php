@@ -60,7 +60,7 @@
 							<form action="results.php" method="POST">
 								<p>Search by Department</p>
 								<!-- <input type="text" placeholder="Department"> -->
-								<select name="symptom">
+								<select class="select-index" name="symptom">
 									<option value="" disabled selected>Select</option>
 									<?php $result = mysqli_query($con,"select * from departments");
 									if (mysqli_num_rows($result) > 0) {
@@ -75,7 +75,7 @@
 								<div class="patient-img"></div>
 								<form action="results.php" method="POST">
 									<p>Enter Name of Lab test</p>
-									<select name="symptom">
+									<select class="select-index" name="symptom">
 										<option value="" disabled selected>Select</option>
 										<?php $result = mysqli_query($con,"select * from lab_test");
 										if (mysqli_num_rows($result) > 0) {

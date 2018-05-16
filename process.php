@@ -130,21 +130,21 @@ if(isset($_POST['patientreg'])){
 
 
 //Add new schdeule
- if (isset($_POST['add_schedule'])) {
-     $doc_id = $_POST['doc_id'];
-     $day = $_POST['day'];
-     $time_from =  strtotime($_POST['time_from']);
-     $time_to =  strtotime($_POST['time_to']);
-     $time_from = date("g:i a", $time_from);
-     $time_to = date("g:i a", $time_to);
+if (isset($_POST['add_schedule'])) {
+ $doc_id = $_POST['doc_id'];
+ $day = $_POST['day'];
+ $time_from =  strtotime($_POST['time_from']);
+ $time_to =  strtotime($_POST['time_to']);
+ $time_from = date("g:i a", $time_from);
+ $time_to = date("g:i a", $time_to);
 
-     $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
-     if (mysqli_query($con,$sql)) {
-        $_SESSION['msg']="Schedule added";
-        header("location: manage_schedule.php?doc_id=".$doc_id);
-    } else {
-        die(mysqli_error($con));
-    } 
+ $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
+ if (mysqli_query($con,$sql)) {
+    $_SESSION['msg']="Schedule added";
+    header("location: manage_schedule.php?doc_id=".$doc_id);
+} else {
+    die(mysqli_error($con));
+} 
 }
 
 
@@ -193,8 +193,8 @@ if (isset($_POST['change_pass'])) {
         $_SESSION['msg'] = "Password Changed";
         header("location: profile.php?id=$user_id");
     }else{
-         die(mysqli_error($con));
-    }
+     die(mysqli_error($con));
+ }
 }
 
 // Edit Doctor profile
@@ -215,8 +215,8 @@ if (isset($_POST['change_doc_profile'])) {
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
     }else{
-         die(mysqli_error($con));
-    }
+     die(mysqli_error($con));
+ }
 }
 
 // Suspend Doctor
@@ -227,8 +227,8 @@ if (isset($_GET['suspend_doc'])) {
         $_SESSION['msg'] = "Account suspended";
         header("location: profile.php?id=$user_id");
     }else{
-         die(mysqli_error($con));
-    }
+     die(mysqli_error($con));
+ }
 }
 
 
@@ -240,8 +240,8 @@ if (isset($_GET['activate'])) {
         $_SESSION['msg'] = "Account activated";
         header("location: profile.php?id=$user_id");
     }else{
-         die(mysqli_error($con));
-    }
+     die(mysqli_error($con));
+ }
 }
 
 
@@ -252,9 +252,104 @@ if (isset($_GET['delete_schedule'])) {
     if (mysqli_query($con,$sql)) {
         header("location: manage_schedule.php?doc_id={$_GET['doc_id']}");
     }else{
-         die(mysqli_error($con));
-    }
+     die(mysqli_error($con));
+ }
 }
 
+
+// Add/delete test days
+if (isset($_POST['test_day'])) {
+
+    // Insertion sort
+    function insertion_sort($array){
+        for($i=0;$i<count($array);$i++){
+            $val = $array[$i];
+            $j = $i-1;
+            while($j>=0 && $array[$j] > $val){
+                $array[$j+1] = $array[$j];
+                $j--;
+            }
+            $array[$j+1] = $val;
+        }
+        return $array;
+    }
+
+    // Function to convert days to number
+    function days_to_num($array){
+        foreach ($array as $key => $value){
+            $array[$key] = date('N',strtotime($value));
+        }
+        return $array;
+    }
+
+    // Function to convert numbers to days
+    function num_to_days($array){
+        foreach ($array as $key => $value){
+            $array[$key] = date('D', strtotime("Sunday +{$value} days"));
+        }
+        return $array;
+    }
+    $day = $_POST['day'];
+    $action = $_POST['action'];
+    $test_id  = $_POST['test_id'];
+
+    // get current date string from lab_test.days
+    $result = mysqli_fetch_array(mysqli_query($con,"SELECT days from lab_test WHERE lab_test_id = '$test_id'"));
+
+    // Pre-existing days string in database
+    $db_days = $result[0];
+
+    // look for the new day in the string of days from database
+    if (!strpos($db_days, $day)) {
+        // Code to add new day goes here
+        // Check if the action is set to 'add'
+        if ($action == "add") {
+
+            // Run algorithm to add the date
+            $arr_days = explode(",", $db_days);
+
+            // If no days found in database
+            if (empty($db_days)) {
+                $arr_days = array($day);
+            }else{
+                array_push($arr_days,$day);
+            }
+
+            if(count($arr_days)>1){
+                // Convert days to numbers
+                $arr_days = days_to_num($arr_days);
+                // Sort days using insertion sort
+                $arr_days = insertion_sort($arr_days);
+                // Convert numeric days to alphabetic days
+                $arr_days = num_to_days($arr_days);
+            }
+            // Convert array of days to string
+            $new_days = implode(",", $arr_days);
+
+            // SQL to insert new days in db
+
+        }else{
+            // If action in not "add".
+            // redirect with error message
+        }
+    }else{
+        // If day already exist in database
+        // Delete code goes here
+        // Check whether action is set to "del"
+        if ($action == "del") {
+
+        }else{
+            // Redirect with an error message
+        }
+
+    }
+
+    // To add a new day
+    // $sql = "UPDATE `lab_test` SET `days` =  WHERE `schedule_id` = '$schedule_id'";
+}
+
+
+
+// Close Mysqli connection
 mysqli_close($con);
 ?>

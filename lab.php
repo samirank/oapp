@@ -20,33 +20,32 @@
                 <button class="btn" type="submit" name="edit_lab_name">Submit</button>
             </form>
         </div>
-        <?php } ?>
+    <?php } ?>
     <table id="view-form" cellspacing="0">
-            <tr>
-            	<th>Sl.No.</th>
-                <th>Lab Id</th>
-                <th>Lab Name</th>
-                <th>Action</th>
-            </tr>
-            <?php
-            $count=1;
-            $result = mysqli_query($con,"select * from lab_test");
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                    <tr>
-                        <td><?php echo $count; ?></td>
-                        <td><?php echo $row["lab_test_id"] ?></td>
-                        <td><?php echo $row["lab_test"] ?></td>
-                        <td><a href="lab.php?edit=<?php echo $row['lab_test_id'];?>" class="btn-e">Edit</a></td>
-                    </tr>
-                    <?php
-                    $count++;
-                }
-            } else {
-                echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';
+        <tr>
+            <th>Lab Id</th>
+            <th>Lab Name</th>
+            <th>Days</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <?php
+        $result = mysqli_query($con,"select * from lab_test");
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <tr>
+                    <td><?php echo $row["lab_test_id"] ?></td>
+                    <td><?php echo $row["lab_test"] ?></td>
+                    <td style="color: blue;"><?php echo $row["days"] ?>Mon,Tue,Wed,Thu</td>
+                    <td><a style="width: 85px; background-color: #e84393;" href="days.php?edit=<?php echo $row['lab_test_id'];?>" class="btn-e">Manage days</a></td>
+                    <td><a style="width: 60px;" href="lab.php?edit=<?php echo $row['lab_test_id'];?>" class="btn-e">Edit name</a></td>
+                </tr>
+                <?php
             }
-            ?>
-        </table>
+        } else {
+            echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';
+        }
+        ?>
+    </table>
 </td>
 <?php include('master/foot.php'); ?>
