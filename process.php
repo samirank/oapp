@@ -40,11 +40,11 @@ if (isset($_POST['add_dept'])) {
     }
 }
 if (isset($_POST['add_lab'])) {
-    $dept_name = $_POST['dept_name'];
-    $sql = "INSERT INTO `departments` (`dept_name`) VALUES ('$dept_name')";
+    $lab_name = $_POST['lab_name'];
+    $sql = "INSERT INTO `lab_test` (`lab_test`) VALUES ('$lab_name')";
     if (mysqli_query($con,$sql)) {
-        $_SESSION['msg']="Department added successfully";
-        header("location: add_dept.php");
+        $_SESSION['msg']="Lab Test added successfully";
+        header("location: add_labtest.php");
     } else {
         die(mysqli_error($con));
     }
@@ -166,6 +166,16 @@ if (isset($_POST['edit_dept_name'])) {
     $sql = "UPDATE `departments` SET `dept_name` = '$name' WHERE `departments`.`dept_id` = '$dept_id'";
     if (mysqli_query($con,$sql)) {
         header("location: departments.php");
+    }else{
+        die(mysqli_error($con));
+    }
+}
+if (isset($_POST['edit_lab_name'])) {
+    $labtest_id = $_POST['lab_test_id'];
+    $name = $_POST['new_name'];
+    $sql = "UPDATE `lab_test` SET `lab_test` = '$name' WHERE `lab_test`.`lab_test_id` = '$labtest_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: lab.php");
     }else{
         die(mysqli_error($con));
     }
