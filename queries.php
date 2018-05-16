@@ -113,6 +113,15 @@ if (mysqli_query($con,$sql)) {
   $flag = 1;
 }
 
+// Added days to lab_test table
+$sql = "ALTER TABLE `lab_test` ADD `days` VARCHAR(100) NULL AFTER `lab_test`";
+if (mysqli_query($con,$sql)) {
+  echo "Added days to 'lab_test' table"."<br>";
+  $flag = 1;
+}
+
+
+// Message to show when nothing is changed/added to the database
 if ($flag == 0) {
   echo "Nothing new to add";
 }

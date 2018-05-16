@@ -6,7 +6,7 @@
         <li><a href="lab.php">Laboratory</a></li>
     </ul>
     <div>
-    	<a id="add_dept_btn" class="btn-a" href="add_labtest.php">Add Lab Test</a>
+    	<a class="btn-a btn-lg" href="add_labtest.php">Add Lab Test</a>
     </div>
     <?php if(isset($_GET['edit'])){ ?>
         <div class="edit-dept">
