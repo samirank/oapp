@@ -257,6 +257,15 @@ if (isset($_GET['delete_schedule'])) {
 }
 
 
+
+
+
+
+
+
+
+
+
 // Add/delete test days
 if (isset($_POST['test_day'])) {
 
@@ -289,6 +298,17 @@ if (isset($_POST['test_day'])) {
         }
         return $array;
     }
+
+    // Funtion to run update query
+    function update_days($con,$test_id,$days){
+        $sql = "UPDATE `lab_test` SET `days` = '$days'  WHERE `lab_test_id` = '$test_id'";
+        if(mysqli_query($con,$sql)){
+            $_SESSION['msg'] = "days updated successfully";
+            header("location: days.php?edit=$test_id");   
+        }else{
+            echo mysqli_error($con);
+        }
+    }
     $day = $_POST['day'];
     $action = $_POST['action'];
     $test_id  = $_POST['test_id'];
@@ -300,7 +320,7 @@ if (isset($_POST['test_day'])) {
     $db_days = $result[0];
 
     // look for the new day in the string of days from database
-    if (!strpos($db_days, $day)) {
+    if (strpos($db_days, $day)===false) {
         // Code to add new day goes here
         // Check if the action is set to 'add'
         if ($action == "add") {
@@ -327,25 +347,36 @@ if (isset($_POST['test_day'])) {
             $new_days = implode(",", $arr_days);
 
             // SQL to insert new days in db
+            update_days($con,$test_id,$new_days);
 
         }else{
-            // If action in not "add".
+            // If action is not "add".
             // redirect with error message
-        }
-    }else{
+           $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
+           header("location: days.php?edit=$test_id");
+       }
+   }else{
         // If day already exist in database
         // Delete code goes here
         // Check whether action is set to "del"
-        if ($action == "del") {
-
-        }else{
-            // Redirect with an error message
-        }
-
-    }
-
-    // To add a new day
-    // $sql = "UPDATE `lab_test` SET `days` =  WHERE `schedule_id` = '$schedule_id'";
+    if ($action == "del"){
+       $arr_days = explode(",", $db_days);
+       if (($key = array_search($day, $arr_days)) !== false){
+        unset($arr_days[$key]);
+        $new_days = implode(",", $arr_days);
+        echo $new_days;
+            // SQL to insert new days in db
+        update_days($con,$test_id,$new_days);
+    }else{
+       $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
+       header("location: days.php?edit=$test_id");
+   }
+}else{
+                // Redirect with an error message
+   $_SESSION['msg'] = "Test already available on $day";
+   header("location: days.php?edit=$test_id");
+}
+}
 }
 
 
