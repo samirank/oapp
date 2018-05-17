@@ -62,7 +62,7 @@ if (mysqli_num_rows($result) != 1) {
 			<?php if ($row['status']!="active"): ?>
 				<a class="btn-a btn-lg" href="process.php?activate=<?php echo $row['user_id']; ?>">Activate account</a>
 				<?php else: ?>
-					<a class="btn-a btn-lg" href="process.php?suspend_doc=<?php echo $row['user_id']; ?>">Suspend Account</a>
+					<a class="btn-a btn-lg" href="process.php?suspend=<?php echo $row['user_id']; ?>">Suspend Account</a>
 				<?php endif ?>
 			<?php endif ?>
 		</div>
@@ -309,9 +309,7 @@ if (mysqli_num_rows($result) != 1) {
 
 
 			<!-- For laboratorian Profile -->
-			<?php if ($row['user_role']=='laboratorian'): ?>
-
-			<?php endif ?>
+			<?php if($row['user_role']=='laboratorian'){ header("location: laboratorian.php"); } ?>
 		</td>
 		<?php include 'master/foot.php'; 
 		?>

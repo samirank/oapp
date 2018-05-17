@@ -1,16 +1,16 @@
 <?php include('master/head.php'); ?>
 <?php include('master/db.php'); ?>
-<?php if ($_SESSION['log_role']=="laboratorian"): ?>
-    <?php header("location: lab_bookings.php") ?>
+<?php if ($_SESSION['log_role']=="doctor"): ?>
+    <?php header("location: bookings.php") ?>
 <?php endif ?>
 <td class="content">
 	<ul class="breadcrumb">
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li>Bookings</li>
+        <li>Lab bookings</li>
     </ul>
-    <?php if ($_SESSION['log_role']!="doctor"): ?>
+    <?php if ($_SESSION['log_role']!="laboratorian"): ?>
         <div>
-            <a class="btn-a btn-lg" href="lab_bookings.php<?php if(isset($_GET['id'])) echo "?id=".$_GET['id']; ?>">Doctor bookings</a>
+            <a class="btn-a btn-lg" href="bookings.php<?php if(isset($_GET['id'])) echo "?id=".$_GET['id']; ?>">Doctor bookings</a>
         </div>
     <?php endif ?>
     <table id="view-form" cellspacing="0">

@@ -11,6 +11,8 @@ if (mysqli_query($con,$sql)) {
 	echo "Created table name 'users'"."<br>";
   $flag = 1;
 }
+$sql = "ALTER TABLE `users` CHANGE `user_role` `user_role` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL";
+mysqli_query($con,$sql);
 
 
 // Create Departments table
@@ -61,6 +63,12 @@ if (mysqli_query($con,$sql)) {
   $flag = 1;
 }
 
+// Create Laboratorian table
+$sql = "CREATE TABLE `laboratorian` (`laboratorian_id` int(11) NOT NULL AUTO_INCREMENT, `user_id` int(11) NOT NULL, `name` varchar(50) NOT NULL, `email_id` varchar(50) NOT NULL,`ph_no` varchar(15) NOT NULL, PRIMARY KEY (`laboratorian_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1";
+if (mysqli_query($con,$sql)) {
+  echo "Created table name 'laboratorian'"."<br>";
+  $flag = 1;
+}
 
 // Add profile pic in doctor
 $sql = "ALTER TABLE `doctors` ADD `profile_pic` VARCHAR(50) NOT NULL DEFAULT 'images/profile/default.jpg' AFTER `gender`;";
@@ -88,14 +96,14 @@ if (mysqli_query($con,$sql)) {
 // Lab_booking table
 $sql = "CREATE TABLE `oapp`.`lab_bookings` ( `booking_id` INT NOT NULL AUTO_INCREMENT , `patient_id` INT NOT NULL , `test_id` INT NOT NULL , `date_of_booking` INT NOT NULL , `date_of_test` INT NOT NULL , `status` INT NOT NULL , PRIMARY KEY (`booking_id`)) ENGINE = InnoDB";
 if (mysqli_query($con,$sql)) {
-  // Change lab_bookings datatypes
-  $sql = "ALTER TABLE `lab_bookings` CHANGE `date_of_booking` `date_of_booking` DATE NOT NULL, CHANGE `date_of_test` `date_of_test` DATE NOT NULL, CHANGE `status` `status` VARCHAR(20) NOT NULL;";
-  mysqli_query($con,$sql);
-  $sql = "ALTER TABLE `lab_bookings` CHANGE `status` `status` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'active'";
-  mysqli_query($con,$sql);
   echo "Created table name 'lab_bookings'"."<br>";
   $flag = 1;
 }
+// Change lab_bookings datatypes
+$sql = "ALTER TABLE `lab_bookings` CHANGE `date_of_booking` `date_of_booking` DATE NOT NULL, CHANGE `date_of_test` `date_of_test` DATE NOT NULL, CHANGE `status` `status` VARCHAR(20) NOT NULL;";
+mysqli_query($con,$sql);
+$sql = "ALTER TABLE `lab_bookings` CHANGE `status` `status` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'active'";
+mysqli_query($con,$sql);
 
 // Added status column to  bookings table
 $sql = "ALTER TABLE `bookings` ADD `status` VARCHAR(10) NOT NULL DEFAULT 'active' AFTER `date_of_appointment`";

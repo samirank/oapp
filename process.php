@@ -131,15 +131,15 @@ if(isset($_POST['patientreg'])){
 
 //Add new schdeule
 if (isset($_POST['add_schedule'])) {
- $doc_id = $_POST['doc_id'];
- $day = $_POST['day'];
- $time_from =  strtotime($_POST['time_from']);
- $time_to =  strtotime($_POST['time_to']);
- $time_from = date("g:i a", $time_from);
- $time_to = date("g:i a", $time_to);
+   $doc_id = $_POST['doc_id'];
+   $day = $_POST['day'];
+   $time_from =  strtotime($_POST['time_from']);
+   $time_to =  strtotime($_POST['time_to']);
+   $time_from = date("g:i a", $time_from);
+   $time_to = date("g:i a", $time_to);
 
- $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
- if (mysqli_query($con,$sql)) {
+   $sql = "INSERT INTO `schedule` (`doc_id`, `day`, `time_from`, `time_to`) VALUES ('$doc_id', '$day', '$time_from', '$time_to')";
+   if (mysqli_query($con,$sql)) {
     $_SESSION['msg']="Schedule added";
     header("location: manage_schedule.php?doc_id=".$doc_id);
 } else {
@@ -193,8 +193,8 @@ if (isset($_POST['change_pass'])) {
         $_SESSION['msg'] = "Password Changed";
         header("location: profile.php?id=$user_id");
     }else{
-     die(mysqli_error($con));
- }
+       die(mysqli_error($con));
+   }
 }
 
 // Edit Doctor profile
@@ -215,20 +215,20 @@ if (isset($_POST['change_doc_profile'])) {
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
     }else{
-     die(mysqli_error($con));
- }
+       die(mysqli_error($con));
+   }
 }
 
 // Suspend Doctor
-if (isset($_GET['suspend_doc'])) {
-    $user_id = $_GET['suspend_doc'];
+if (isset($_GET['suspend'])) {
+    $user_id = $_GET['suspend'];
     $sql = "UPDATE `users` SET `status` = 'suspended' WHERE `users`.`user_id` = '$user_id'";
     if (mysqli_query($con,$sql)) {
         $_SESSION['msg'] = "Account suspended";
         header("location: profile.php?id=$user_id");
     }else{
-     die(mysqli_error($con));
- }
+       die(mysqli_error($con));
+   }
 }
 
 
@@ -240,8 +240,8 @@ if (isset($_GET['activate'])) {
         $_SESSION['msg'] = "Account activated";
         header("location: profile.php?id=$user_id");
     }else{
-     die(mysqli_error($con));
- }
+       die(mysqli_error($con));
+   }
 }
 
 
@@ -252,8 +252,8 @@ if (isset($_GET['delete_schedule'])) {
     if (mysqli_query($con,$sql)) {
         header("location: manage_schedule.php?doc_id={$_GET['doc_id']}");
     }else{
-     die(mysqli_error($con));
- }
+       die(mysqli_error($con));
+   }
 }
 
 
@@ -352,31 +352,61 @@ if (isset($_POST['test_day'])) {
         }else{
             // If action is not "add".
             // redirect with error message
-           $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
-           header("location: days.php?edit=$test_id");
-       }
-   }else{
+         $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
+         header("location: days.php?edit=$test_id");
+     }
+ }else{
         // If day already exist in database
         // Delete code goes here
         // Check whether action is set to "del"
     if ($action == "del"){
-       $arr_days = explode(",", $db_days);
-       if (($key = array_search($day, $arr_days)) !== false){
+     $arr_days = explode(",", $db_days);
+     if (($key = array_search($day, $arr_days)) !== false){
         unset($arr_days[$key]);
         $new_days = implode(",", $arr_days);
         echo $new_days;
             // SQL to insert new days in db
         update_days($con,$test_id,$new_days);
     }else{
-       $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
-       header("location: days.php?edit=$test_id");
-   }
+     $_SESSION['msg'] = "Couldn't update. Test already unavailable on $day";
+     header("location: days.php?edit=$test_id");
+ }
 }else{
                 // Redirect with an error message
-   $_SESSION['msg'] = "Test already available on $day";
-   header("location: days.php?edit=$test_id");
+ $_SESSION['msg'] = "Test already available on $day";
+ header("location: days.php?edit=$test_id");
 }
 }
+}
+
+
+
+
+// Add new laboratorian
+if (isset($_POST['add_laboratorian'])) {
+    print_r($_POST);
+    $name = $_POST['name'];
+    $email_id = $_POST['email_id'];
+    $phno = $_POST['phno'];
+    $user_name = $_POST['user_name'];
+    $pass = $_POST['pass'];
+
+    mysqli_autocommit($con,false);
+    $sql = "INSERT INTO `users` (`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$user_name', 'laboratorian', '$pass', now())";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }
+
+    $sql = "INSERT INTO `laboratorian` (`user_id`, `name`, `email_id`, `ph_no`) VALUES (LAST_INSERT_ID(), '$name', '$email_id', '$phno')";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }else{
+        mysqli_commit($con);
+        $_SESSION['msg'] = "Laboratorian added successfully";
+        header("location: laboratorian.php");
+    }
 }
 
 
