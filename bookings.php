@@ -10,7 +10,7 @@
     </ul>
     <?php if ($_SESSION['log_role']!="doctor"): ?>
         <div>
-            <a class="btn-a btn-lg" href="lab_bookings.php<?php if(isset($_GET['id'])) echo "?id=".$_GET['id']; ?>">Lab bookings</a>
+            <a class="btn-a btn-lg" href="lab_bookings.php<?php if(isset($_GET['id'])) echo "?id=".$_GET['id']; ?>">View lab bookings</a>
         </div>
     <?php endif ?>
     <table id="view-form" cellspacing="0">
@@ -51,22 +51,33 @@
             $result = mysqli_query($con,$sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                    <tr>
-                        <td><?php echo $row["booking_id"] ?></td>
-                        <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["patient_name"] ?></a></td>
-                        <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['doc_user_id']; ?>"><?php echo $row["doc_name"] ?></a></td>
-                        <td><?php echo $row["dept_name"] ?></td>
-                        <td><?php echo $row["date_of_booking"] ?></td>
-                        <td><?php echo $row["date_of_appointment"] ?></td>
-                        <form action="process.php" method="POST">
-                            <?php if ($_SESSION['log_role']=='patient') { ?>
-                                <td>
-                                    <input type="text" name="booking_id" value="<?php echo $row['booking_id']; ?>" hidden>
-                                    <button class="btn-d" style="width: 55px;" type="submit" name="cancel_appointment" <?php if ($row['status'] != "active") { echo "disabled"; } ?>><?php if ($row['status'] == "active") { echo "cancel"; }else{ echo $row['status'];} ?></button>
-                                <?php } ?>
+                    if ($row['status']=='active') {
+                        if ((strtotime($row['date_of_appointment']) - strtotime('today'))<=0) {
+                        $row['status'] = "completed";
+                        mysqli_query($con,"UPDATE bookings SET `status`='completed' WHERE booking_id = {$row['booking_id']}");
+                    }
+                }
+                ?>
+                <tr>
+                    <td><?php echo $row["booking_id"] ?></td>
+                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["patient_name"] ?></a></td>
+                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['doc_user_id']; ?>"><?php echo $row["doc_name"] ?></a></td>
+                    <td><?php echo $row["dept_name"] ?></td>
+                    <td><?php echo $row["date_of_booking"] ?></td>
+                    <td><?php echo $row["date_of_appointment"] ?></td>
+                    <?php if ($_SESSION['log_role']=='patient') { ?>
+                        <td>
+                            <?php if ($row['status'] == "active"): ?>
+                                <a class="btn-d" style="width: 55px;" href="process.php?cancel_doc=<?php echo $row['booking_id']; ?>">cancel</a>
+                                <?php else: ?>
+                                    <button class="btn-e" style="width: auto; cursor: default; background-color: #<?php echo ($row['status']=="completed" ? "6bbf72": "777"); ?>;" disabled> <?php echo $row['status']; ?> </button>
+                                <?php endif ?>
                             </td>
-                        </form>
+                        <?php }else{ ?>
+                            <td>
+                                <button class="btn-e" style="width: 60px; cursor: default; background-color: #<?php echo ($row['status']=="completed" ? "6bbf72": ($row['status']=="active" ? "6c5ce7": "777")); ?>;" disabled> <?php echo $row['status']; ?> </button>
+                            </td>
+                        <?php } ?>
                     </tr>
                     <?php
                 }

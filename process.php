@@ -2,7 +2,9 @@
 session_start();
 include ('master/db.php');
 
-
+if (empty($_GET) || empty($_POST)) {
+    header("location: index.php");
+}
 
 // login Validation
 if(isset($_POST['login_submit'])){
@@ -149,11 +151,22 @@ if (isset($_POST['add_schedule'])) {
 
 
 // Cancel appointment
-if (isset($_POST['cancel_appointment'])) {
-    $booking_id = $_POST['booking_id'];
+if (isset($_GET['cancel_doc'])) {
+    $booking_id = $_GET['cancel_doc'];
     $sql = "UPDATE `bookings` SET `status` = 'cancelled' WHERE `bookings`.`booking_id` = '$booking_id'";
     if (mysqli_query($con,$sql)) {
         header("location: bookings.php");
+    }else{
+        die(mysqli_error($con));
+    }
+}
+
+// Cancel lab test
+if (isset($_GET['cancel_lab'])) {
+    $booking_id = $_GET['cancel_lab'];
+    $sql = "UPDATE `lab_bookings` SET `status` = 'cancelled' WHERE `lab_bookings`.`booking_id` = '$booking_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: lab_bookings.php");
     }else{
         die(mysqli_error($con));
     }
