@@ -36,6 +36,7 @@
                            <li><a href="departments.php">Departments</a></li>
                            <li><a href="doctors.php">Doctors</a></li>
                            <li><a href="bookings.php">Bookings</a></li>
+                           <li><a href="lab_bookings.php">Lab bookings</a></li>
                            <li><a href="patients.php">Patients</a></li>
                            <li><a href="laboratorian.php">Laboratorian</a></li>
                            <li class="menu-end-item"><a href="lab.php">Laboratory</a></li>

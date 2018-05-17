@@ -219,7 +219,7 @@ if (isset($_POST['change_doc_profile'])) {
    }
 }
 
-// Suspend Doctor
+// Suspend account
 if (isset($_GET['suspend'])) {
     $user_id = $_GET['suspend'];
     $sql = "UPDATE `users` SET `status` = 'suspended' WHERE `users`.`user_id` = '$user_id'";
@@ -409,7 +409,21 @@ if (isset($_POST['add_laboratorian'])) {
     }
 }
 
+// Edit laboratorian profile
+if (isset($_POST['edit_laboratorian'])) {
+    $name = $_POST['name'];
+    $email_id = $_POST['email_id'];
+    $phno = $_POST['phno'];
+    $user_id = $_POST['id'];
 
+    $sql = "UPDATE `laboratorian` SET `name`='$name',`email_id`='$email_id',`ph_no`='$phno' WHERE user_id = '$user_id'";
+     if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Profile Updated";
+        header("location: profile.php?id=$user_id");
+    }else{
+       die(mysqli_error($con));
+   }
+}
 
 // Close Mysqli connection
 mysqli_close($con);

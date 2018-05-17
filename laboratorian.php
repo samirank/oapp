@@ -32,40 +32,81 @@ include 'master/db.php';
     </div>
 <?php endif ?>
 
-<?php if (isset($_GET['add'])): ?>
+<?php if ((isset($_GET['add'])) && !(isset($_GET['edit']))): ?>
+<div class="change-pass" style="display: block; margin-bottom: 20px;">
+    <form action="process.php" method="POST">
+        <table id="tab-form" style="margin: auto 25%;">
+            <tr>
+                <td>Name :</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Email id :</td>
+                <td><input type="text" name="email_id"></td>
+            </tr>
+            <tr>
+                <td>Phone no</td>
+                <td><input type="text" maxlength="10" name="phno"></td>
+            </tr>
+            <tr>
+                <td>Username :</td>
+                <td><input type="text" name="user_name"></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+                <td>Confirm password :</td>
+                <td><input type="password" name="cnf_pass"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button style="margin-left: 17%;" class="btn" type="submit" name="add_laboratorian">Submit</button></td>
+            </tr>
+        </table>    
+    </form>
+</div>
+<?php endif ?>
+
+
+<?php if ((isset($_GET['edit'])) && !(isset($_GET['add']))): ?>
+<?php $result = mysqli_query($con,"SELECT * FROM laboratorian JOIN users ON laboratorian.user_id=users.user_id WHERE laboratorian.laboratorian_id = {$_GET['edit']}");
+if (mysqli_num_rows($result)==1) {
+    $row = mysqli_fetch_assoc($result);
+    ?>
+
+<!-- Edit profile -->
     <div class="change-pass" style="display: block; margin-bottom: 20px;">
         <form action="process.php" method="POST">
             <table id="tab-form" style="margin: auto 25%;">
+                <tr><td colspan="2"><h3>Edit account</h3></td></tr>
                 <tr>
                     <td>Name :</td>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" name="name" value="<?php echo $row['name']; ?>"></td>
                 </tr>
                 <tr>
                     <td>Email id :</td>
-                    <td><input type="text" name="email_id"></td>
+                    <td><input type="text" name="email_id" value="<?php echo $row['email_id']; ?>"></td>
                 </tr>
                 <tr>
                     <td>Phone no</td>
-                    <td><input type="text" maxlength="10" name="phno"></td>
+                    <td><input type="text" maxlength="10" name="phno" value="<?php echo $row['ph_no']; ?>"></td>
                 </tr>
                 <tr>
                     <td>Username :</td>
-                    <td><input type="text" name="user_name"></td>
+                    <td><input type="text" name="user_name" value="<?php echo $row['user_name']; ?>" disabled></td>
                 </tr>
                 <tr>
-                    <td>Password :</td>
-                    <td><input type="password" name="pass"></td>
-                </tr>
-                <tr>
-                    <td>Confirm password :</td>
-                    <td><input type="password" name="cnf_pass"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button style="margin-left: 17%;" class="btn" type="submit" name="add_laboratorian">Submit</button></td>
+                    <td colspan="2">
+                        <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
+                        <button style="margin-left: 17%;" class="btn" type="submit" name="edit_laboratorian">Submit</button>
+                    </td>
                 </tr>
             </table>    
         </form>
     </div>
+
+<?php } ?>
 <?php endif ?>
 
 <form action="process.php" method="post">
@@ -79,7 +120,8 @@ include 'master/db.php';
                 <th>email</th>
                 <th>status</th>
                 <?php if ($_SESSION['log_role']=="admin"): ?>
-                    <th>Action</th>
+                    <th></th>
+                    <th></th>
                 <?php endif ?>
             </tr>
         </thead>
@@ -99,10 +141,13 @@ include 'master/db.php';
                         <?php if ($_SESSION['log_role']=="admin"): ?>
                             <td>
                                 <?php if ($row["status"]=='active'): ?>
-                                    <a style="width: 55px; background-color: #a2aec7;" class="btn-e" href="process.php?suspend=<?php echo $row['user_id']; ?>">Suspend</a>
+                                    <a style="width: 55px; background-color: #777;" class="btn-e" href="process.php?suspend=<?php echo $row['user_id']; ?>">Suspend</a>
                                     <?php else: ?>
                                         <a class="btn-e" href="process.php?activate=<?php echo $row['user_id']; ?>">Activate</a>
                                     <?php endif ?>
+                                </td>
+                                <td>
+                                    <a class="btn-e" href="laboratorian.php?edit=<?php echo $row['laboratorian_id']; ?>">Edit</a>
                                 </td>
                             <?php endif ?>
                         </tr>

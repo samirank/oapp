@@ -16,52 +16,42 @@
     <table id="view-form" cellspacing="0">
         <thead>
             <tr>
-                <th>Sl.No.</th>
                 <th>Booking id</th>
                 <th>Patient</th>
-                <th>Doctor</th>
-                <th>Department</th>
+                <th>Test name</th>
                 <th>Date of booking</th>
                 <th>Date of appointment</th>
-                <?php if ($_SESSION['log_role']=='patient') { ?>
+                <th>status</th>
+                <?php if (($_SESSION['log_role']=='patient') || ($_SESSION['log_role']=='laboratorian')){ ?>
                     <th></th>
                 <?php } ?>
             </tr>
         </thead>
         <tbody>
             <?php
-            $count=1;
-            if ($_SESSION['log_role']=="admin") {
-                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', p.user_id, d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id";
+            if ($_SESSION['log_role']=="patient") {
+                $sql = "SELECT b.booking_id, b.date_of_booking, b.date_of_test,b.status ,t.lab_test,p.name,p.user_id FROM lab_bookings b JOIN patients p on b.patient_id=p.patient_id JOIN lab_test t ON b.test_id=t.lab_test_id WHERE p.user_id = {$_SESSION['log_id']}";
+            }else{
+                $sql = "SELECT b.booking_id, b.date_of_booking, b.date_of_test,b.status ,t.lab_test,p.name,p.user_id FROM lab_bookings b JOIN patients p on b.patient_id=p.patient_id JOIN lab_test t ON b.test_id=t.lab_test_id";
                 if (isset($_GET['id'])) {
                     $result = mysqli_query($con,"SELECT * from users where user_id='{$_GET['id']}'");
                     $row = mysqli_fetch_assoc($result);
-                    if ($row['user_role']=="doctor") {
-                        $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', p.user_id, d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE d.user_id = {$_GET['id']}";
-                    }
                     if ($row['user_role']=="patient") {
-                        $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', p.user_id, d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE p.user_id = {$_GET['id']}";
+                        $sql = "SELECT b.booking_id, b.date_of_booking, b.date_of_test,b.status ,t.lab_test,p.name,p.user_id FROM lab_bookings b JOIN patients p on b.patient_id=p.patient_id JOIN lab_test t ON b.test_id=t.lab_test_id WHERE p.user_id = {$_GET['id']}";
                     }
                 }
-            }
-            if ($_SESSION['log_role']=="patient") {
-                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', p.user_id, d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE p.user_id = {$_SESSION['log_id']}";
-            }
-            if ($_SESSION['log_role']=="doctor") {
-                $sql = "SELECT b.booking_id, b.status, p.name AS 'patient_name', p.user_id, d.doc_name, dp.dept_name, b.date_of_booking, b.date_of_appointment FROM bookings b JOIN schedule s ON b.schedule_id=s.schedule_id JOIN doctors d ON s.doc_id=d.doc_id JOIN patients p ON b.patient_id = p.patient_id JOIN departments dp ON d.dept=dp.dept_id WHERE d.user_id = {$_SESSION['log_id']}";
             }
             $result = mysqli_query($con,$sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
-                        <td><?php echo $count; ?></td>
                         <td><?php echo $row["booking_id"] ?></td>
-                        <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["patient_name"] ?></a></td>
-                        <td><?php echo $row["doc_name"] ?></td>
-                        <td><?php echo $row["dept_name"] ?></td>
+                        <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["name"] ?></a></td>
+                        <td><?php echo $row["lab_test"] ?></td>
                         <td><?php echo $row["date_of_booking"] ?></td>
-                        <td><?php echo $row["date_of_appointment"] ?></td>
+                        <td><?php echo $row["date_of_test"] ?></td>
+                        <td><?php echo $row["status"] ?></td>
                         <form action="process.php" method="POST">
                             <?php if ($_SESSION['log_role']=='patient') { ?>
                                 <td>
@@ -72,7 +62,6 @@
                         </form>
                     </tr>
                     <?php
-                    $count++;
                 }
             } else {
                 echo '<tr><td colspan="11" style="text-align:center;">No records found !</td></tr>';

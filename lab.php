@@ -36,7 +36,7 @@
                 <tr>
                     <td><?php echo $row["lab_test_id"] ?></td>
                     <td><?php echo $row["lab_test"] ?></td>
-                    <td style="color: blue;"><?php echo $row["days"] ?>Mon,Tue,Wed,Thu</td>
+                    <td style="color: blue;"><?php echo $row["days"] ?></td>
                     <td><a style="width: 85px; background-color: #e84393;" href="days.php?edit=<?php echo $row['lab_test_id'];?>" class="btn-e">Manage days</a></td>
                     <td><a style="width: 60px;" href="lab.php?edit=<?php echo $row['lab_test_id'];?>" class="btn-e">Edit name</a></td>
                 </tr>

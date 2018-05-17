@@ -57,7 +57,7 @@ $row = mysqli_fetch_assoc($result);
                 </tr>
                 <tr>
                     <td>User name</td>
-                    <td><input type="text" name="uname" value="<?php echo $row['user_name']; ?>"></td>
+                    <td><input type="text" name="uname" value="<?php echo $row['user_name']; ?>" disabled></td>
                 </tr>
                 <tr>
                     <td>Address :</td>

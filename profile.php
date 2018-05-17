@@ -176,6 +176,9 @@ if (mysqli_num_rows($result) != 1) {
 						<a class="btn-a btn-lg" href="process.php?suspend_doc=<?php echo $row['user_id']; ?>">Suspend Account</a>
 					<?php endif ?>
 				<?php endif ?>
+				<?php if ($_SESSION['log_role']!="doctor"): ?>
+					<a class="btn-a btn-lg" href="lab_bookings.php?id=<?php echo $row['user_id']; ?>">Lab bookings</a>
+				<?php endif ?>
 			</div>
 
 			<!-- Change Password -->

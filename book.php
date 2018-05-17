@@ -23,7 +23,7 @@ if (isset($_GET['test_id']) || isset($_SESSION['test_id'])) {
 			header("location: dashboard.php");
 		}else{
 
-			$date = 'next '.$GET['day'];
+			$date = 'next '.date('l',strtotime($GET['day']));
 			$date_of_test = date('Y-m-d', strtotime($date));
 
 			$patient_id = mysqli_query($con,"SELECT * from patients where user_id = {$_SESSION['log_id']}");
