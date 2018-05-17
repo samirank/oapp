@@ -73,9 +73,9 @@
 							</div>
 							<div class="search-input-field book-lab">
 								<div class="patient-img"></div>
-								<form action="results.php" method="POST">
+								<form action="schedule.php" method="GET">
 									<p>Enter Name of Lab test</p>
-									<select class="select-index" name="symptom">
+									<select class="select-index" name="test_id">
 										<option value="" disabled selected>Select</option>
 										<?php $result = mysqli_query($con,"select * from lab_test");
 										if (mysqli_num_rows($result) > 0) {
@@ -83,7 +83,7 @@
 												<option value="<?php echo $row['lab_test_id']; ?>"><?php echo $row['lab_test']; ?></option>
 											<?php }}?>                       
 										</select>
-										<button type="Submit" name="search_lab">Submit</button>
+										<button type="Submit">Submit</button>
 									</form>
 								</div>
 							</div>

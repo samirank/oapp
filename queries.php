@@ -3,10 +3,10 @@
 $flag = 0;
 // Create users table
 $sql = "CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(50) NOT NULL,
-  `user_role` varchar(10) NOT NULL,
-  `password` varchar(100) NOT NULL, PRIMARY KEY (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+`user_id` int(11) NOT NULL AUTO_INCREMENT,
+`user_name` varchar(50) NOT NULL,
+`user_role` varchar(10) NOT NULL,
+`password` varchar(100) NOT NULL, PRIMARY KEY (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'users'"."<br>";
   $flag = 1;
@@ -43,18 +43,18 @@ if (mysqli_query($con,$sql)) {
 
 // Create patients table
 $sql = "CREATE TABLE `patients` (
-  `patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `mobileno` varchar(15) NOT NULL,
-  `guardian` varchar(50) NOT NULL,
-  `emergencycontact` int(11) NOT NULL,
-  `gender` char(10) NOT NULL,
-  `bgroup` varchar(5) NOT NULL,
-  `cur_medication` char(5) NOT NULL,
-  `email_id` varchar(50) NOT NULL,
-  `user_id` varchar(15) NOT NULL,
-  PRIMARY KEY (`patient_id`)
+`patient_id` int(11) NOT NULL AUTO_INCREMENT,
+`name` varchar(50) NOT NULL,
+`address` varchar(50) NOT NULL,
+`mobileno` varchar(15) NOT NULL,
+`guardian` varchar(50) NOT NULL,
+`emergencycontact` int(11) NOT NULL,
+`gender` char(10) NOT NULL,
+`bgroup` varchar(5) NOT NULL,
+`cur_medication` char(5) NOT NULL,
+`email_id` varchar(50) NOT NULL,
+`user_id` varchar(15) NOT NULL,
+PRIMARY KEY (`patient_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 if (mysqli_query($con,$sql)) {
 	echo "Created table name 'patients'"."<br>";
@@ -81,6 +81,19 @@ if (mysqli_query($con,$sql)) {
 $sql = "CREATE TABLE `oapp`.`bookings` ( `booking_id` INT NOT NULL AUTO_INCREMENT , `schedule_id` INT NOT NULL , `patient_id` INT NOT NULL , `date_of_booking` DATE NOT NULL , `date_of_appointment` DATE NOT NULL , PRIMARY KEY (`booking_id`)) ENGINE = InnoDB;";
 if (mysqli_query($con,$sql)) {
   echo "Created table name 'bookings'"."<br>";
+  $flag = 1;
+}
+
+
+// Lab_booking table
+$sql = "CREATE TABLE `oapp`.`lab_bookings` ( `booking_id` INT NOT NULL AUTO_INCREMENT , `patient_id` INT NOT NULL , `test_id` INT NOT NULL , `date_of_booking` INT NOT NULL , `date_of_test` INT NOT NULL , `status` INT NOT NULL , PRIMARY KEY (`booking_id`)) ENGINE = InnoDB";
+if (mysqli_query($con,$sql)) {
+  // Change lab_bookings datatypes
+  $sql = "ALTER TABLE `lab_bookings` CHANGE `date_of_booking` `date_of_booking` DATE NOT NULL, CHANGE `date_of_test` `date_of_test` DATE NOT NULL, CHANGE `status` `status` VARCHAR(20) NOT NULL;";
+  mysqli_query($con,$sql);
+  $sql = "ALTER TABLE `lab_bookings` CHANGE `status` `status` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'active'";
+  mysqli_query($con,$sql);
+  echo "Created table name 'lab_bookings'"."<br>";
   $flag = 1;
 }
 

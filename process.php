@@ -16,7 +16,7 @@ if(isset($_POST['login_submit'])){
         $_SESSION['log_id']=$row['user_id'];
         $_SESSION['log_uname']=$row['user_name'];
         $_SESSION['log_role']=$row['user_role'];
-        if (isset($_SESSION['schedule_id'])) {
+        if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
             header("location: book.php");
         }else{
             header("location: dashboard.php");
@@ -119,7 +119,7 @@ if(isset($_POST['patientreg'])){
             $_SESSION['log_id']=$log_id;
             $_SESSION['log_uname']=$row['user_name'];
             $_SESSION['log_role']=$row['user_role'];
-            if (isset($_SESSION['schedule_id'])) {
+            if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
                 header("location: book.php");
             }else{
                 header("location: dashboard.php");
