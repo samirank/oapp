@@ -94,8 +94,12 @@ if (mysqli_num_rows($result)==1) {
                 </tr>
                 <tr>
                     <td>Username :</td>
-                    <td><input type="text" name="user_name" value="<?php echo $row['user_name']; ?>" disabled></td>
+                    <td><input type="text" value="<?php echo $row['user_name']; ?>" disabled></td>
                 </tr>
+                <tr>
+                            <td>Date of registration :</td>
+                            <td><?php echo $row['date_of_reg']; ?></td>
+                        </tr>
                 <tr>
                     <td colspan="2">
                         <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">

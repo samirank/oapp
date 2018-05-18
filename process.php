@@ -2,7 +2,7 @@
 session_start();
 include ('master/db.php');
 
-if (empty($_GET) || empty($_POST)) {
+if (empty($_GET) && empty($_POST)) {
     header("location: index.php");
 }
 
@@ -15,13 +15,18 @@ if(isset($_POST['login_submit'])){
     $result = mysqli_query($con,$sql);
     if(mysqli_num_rows($result)==1){
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['log_id']=$row['user_id'];
-        $_SESSION['log_uname']=$row['user_name'];
-        $_SESSION['log_role']=$row['user_role'];
-        if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
-            header("location: book.php");
+        if ($row['status']=="active") {
+            $_SESSION['log_id']=$row['user_id'];
+            $_SESSION['log_uname']=$row['user_name'];
+            $_SESSION['log_role']=$row['user_role'];
+            if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
+                header("location: book.php");
+            }else{
+                header("location: dashboard.php");
+            }
         }else{
-            header("location: dashboard.php");
+            $_SESSION['login_err'] = "Account ".$row['status'].". Please contact admin.";
+            header("location: login.php");    
         }
     }else{
         $_SESSION['login_err'] = "Incorrect username / password";
@@ -231,6 +236,27 @@ if (isset($_POST['change_doc_profile'])) {
        die(mysqli_error($con));
    }
 }
+// Edit patient profile
+if (isset($_POST['edit_patient'])) {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $mobileno = $_POST['mobileno'];
+    $guardian = $_POST['guardian'];
+    $emergencycontact = $_POST['emergencycontact'];
+    $bgroup = $_POST['bgroup'];
+    $cur_medication = $_POST['cur_medication'];
+    $email_id = $_POST['email_id'];
+    $user_id = $_POST['user_id'];
+
+    $sql = "UPDATE `patients` SET `name`='$name',`address`='$address',`mobileno`='$mobileno',`guardian`='$guardian',`emergencycontact`='$emergencycontact',`bgroup`='$bgroup',`cur_medication`='$cur_medication',`email_id`='$email_id' WHERE user_id='$user_id'";
+
+    if (mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "Profile Updated";
+        header("location: profile.php?id=$user_id");
+    }else{
+       die(mysqli_error($con));
+   }
+}
 
 // Suspend account
 if (isset($_GET['suspend'])) {
@@ -264,6 +290,17 @@ if (isset($_GET['delete_schedule'])) {
     $sql = "UPDATE `schedule` SET `status` = 'deleted' WHERE `schedule_id` = '$schedule_id'";
     if (mysqli_query($con,$sql)) {
         header("location: manage_schedule.php?doc_id={$_GET['doc_id']}");
+    }else{
+       die(mysqli_error($con));
+   }
+}
+
+// Delete Account
+if (isset($_GET['delete_acc'])) {
+    $user_id = $_GET['delete_acc'];
+    $sql = "UPDATE `users` SET `status` = 'deleted' WHERE `user_id` = '$user_id'";
+    if (mysqli_query($con,$sql)) {
+        header("location: logout.php");
     }else{
        die(mysqli_error($con));
    }
@@ -430,7 +467,7 @@ if (isset($_POST['edit_laboratorian'])) {
     $user_id = $_POST['id'];
 
     $sql = "UPDATE `laboratorian` SET `name`='$name',`email_id`='$email_id',`ph_no`='$phno' WHERE user_id = '$user_id'";
-     if (mysqli_query($con,$sql)) {
+    if (mysqli_query($con,$sql)) {
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
     }else{

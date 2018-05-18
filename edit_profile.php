@@ -3,7 +3,11 @@ include 'master/head.php';
 include 'master/db.php'; 
 if ($_SESSION['log_role']=="admin") {
     if (isset($_GET['id'])) {
-        $user_id = $_GET['id'];
+        $result = mysqli_fetch_array(mysqli_query($con,"SELECT user_role FROM users WHERE user_id = {$_GET['id']}"));
+        $role = $result[0];
+        if($role!="patient"){
+            $user_id = $_GET['id'];
+        }
     }
 }
 if (!isset($user_id)){
@@ -16,7 +20,8 @@ $row = mysqli_fetch_assoc($result);
 <td id="content">
     <ul class="breadcrumb">
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li>Doctors</li>
+        <li><a href="profile.php<?php if(isset($_GET['id'])){ echo "?id=".$_GET['id']; } ?>">Profile</a></li>
+        <li>Edit profile</li>
     </ul>
 
     <!-- if user not found -->
@@ -26,10 +31,41 @@ $row = mysqli_fetch_assoc($result);
     }
     ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- For admin profile -->
     <?php if ($row['user_role']=='admin'): ?>
         admin
     <?php endif ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- For doctor Profile -->
     <?php if ($row['user_role']=='doctor'): ?>
@@ -104,10 +140,99 @@ $row = mysqli_fetch_assoc($result);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- For patient Profile -->
     <?php if ($row['user_role']=='patient'): ?>
-        Patient
+        <?php $user = mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM patients WHERE user_id = '$user_id'")); ?>
+        <table id="tab-form">
+            <form action="process.php" method="POST">
+                <tr>
+                    <td>Name :</td>
+                    <td><input type="text" value="<?php echo $user['name']; ?>" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Address :</td>
+                    <td><input type="text" value="<?php echo $user['address']; ?>" name="address"></td>
+                </tr>
+                <tr>
+                    <td>Mobile No. :</td>
+                    <td><input type="text" maxlength="10"> value="<?php echo $user['mobileno']; ?>" name="mobileno"></td>
+                </tr>
+                <tr>
+                    <td>Guardian name :</td>
+                    <td><input type="text" value="<?php echo $user['guardian']; ?>" name="guardian"></td>
+                </tr>
+                <tr>
+                    <td>Emergency contact :</td>
+                    <td><input type="text" maxlength="10"> value="<?php echo $user['emergencycontact']; ?>" name="emergencycontact"></td>
+                </tr>
+                <tr>
+                    <td>Blood group :</td>
+                    <td>
+                        <select name="bgroup">
+                            <option value="A+" <?php if($user['bgroup']=="A+"){ echo "selected"; } ?>>A+</option>
+                            <option value="A-" <?php if($user['bgroup']=="A-"){ echo "selected"; } ?>>A-</option>
+                            <option value="B+" <?php if($user['bgroup']=="B+"){ echo "selected"; } ?>>B+</option>
+                            <option value="B-" <?php if($user['bgroup']=="B-"){ echo "selected"; } ?>>B-</option>
+                            <option value="AB+" <?php if($user['bgroup']=="AB+"){ echo "selected"; } ?>>AB+</option>
+                            <option value="AB-" <?php if($user['bgroup']=="AB-"){ echo "selected"; } ?>>AB-</option>
+                            <option value="O+" <?php if($user['bgroup']=="O+"){ echo "selected"; } ?>>O+</option>
+                            <option value="O-" <?php if($user['bgroup']=="A-"){ echo "selected"; } ?>>O-</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Current mdeication :</td>
+                    <td><input type="text" value="<?php echo $user['cur_medication']; ?>" name="cur_medication"></td>
+                </tr>
+                <tr>
+                    <td>Email id :</td>
+                    <td><input type="text" value="<?php echo $user['email_id']; ?>" name="email_id"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="hidden" value="<?php echo $user['user_id']; ?>" name="user_id">
+                        <button class="btn" type="submit" name="edit_patient">Submit</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
     <?php endif ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

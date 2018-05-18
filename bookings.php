@@ -22,7 +22,9 @@
                 <th>Department</th>
                 <th>Date of booking</th>
                 <th>Date of appointment</th>
-                <?php if ($_SESSION['log_role']=='patient') { ?>
+                <?php if ($_SESSION['log_role']!='patient') { ?>
+                    <th>Status</th>
+                <?php }else{ ?>
                     <th></th>
                 <?php } ?>
             </tr>

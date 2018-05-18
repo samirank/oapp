@@ -206,7 +206,8 @@ td#footer{
     right: 15px;
     top: 28%;
     font-size: 15;
-    font-weight: bold;
+    color: #dcdcdc;
+    /*font-weight: bold;*/
 }
 
 /*Logout Button*/
@@ -416,7 +417,7 @@ table#view-form tr:hover {
     position: absolute;
     width: 200px;
     right: 16%;
-    top: 38px;
+    top: 34px;
 }
 .profile-pic a {
     position: absolute;

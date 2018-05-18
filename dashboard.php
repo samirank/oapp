@@ -6,5 +6,24 @@
 }
 ?>
 
+<?php if ($_SESSION['log_role']=="admin"): ?>
+	<!-- Admin Dashboard -->
+<?php endif ?>
+
+
+<?php if ($_SESSION['log_role']=="patient"): ?>
+	<!-- Patient Dashboard -->
+<?php endif ?>
+
+
+<?php if ($_SESSION['log_role']=="doctor"): ?>
+	<!-- Doctor Dashboard -->
+<?php endif ?>
+
+<?php if ($_SESSION['log_role']=="laboratorian"): ?>
+	<!-- Laboratorian Dashboard -->
+<?php endif ?>
+
+
 </td>
 <?php include('master/foot.php'); ?>
