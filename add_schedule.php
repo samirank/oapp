@@ -6,7 +6,7 @@
 				<tr>
 					<td><label for="day">Select day :</label></td>
 					<td>
-						<select name="day">
+						<select name="day" data-validation="required">
 							<option value="" selected disabled>Select</option>
 							<option value="Sunday">Sunday</option>
 							<option value="Monday">Monday</option>

@@ -5,6 +5,7 @@ if(isset($_SESSION['log_id'])){
 ?>
 <html>
 <head>
+	<title>Online Appointment System: Register</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 	<link href="css/patientreg.css" type="text/css" rel="stylesheet" />
@@ -45,7 +46,7 @@ if(isset($_SESSION['log_id'])){
 
 							<tr>
 								<td>Patient Name :</td>
-								<td><input type="text" name="name" placeholder="Enter your full name"></td>
+								<td><input type="text" name="name" placeholder="Enter your full name" autofocus></td>
 							</tr>
 							<tr>
 								<td>Username</td>
