@@ -62,6 +62,7 @@ if (mysqli_query($con,$sql)) {
 	echo "Created table name 'patients'"."<br>";
   $flag = 1;
 }
+mysqli_query($con,"ALTER TABLE `patients` CHANGE `cur_medication` `cur_medication` CHAR(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'None'");
 
 // Create Laboratorian table
 $sql = "CREATE TABLE `laboratorian` (`laboratorian_id` int(11) NOT NULL AUTO_INCREMENT, `user_id` int(11) NOT NULL, `name` varchar(50) NOT NULL, `email_id` varchar(50) NOT NULL,`ph_no` varchar(15) NOT NULL, PRIMARY KEY (`laboratorian_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1";

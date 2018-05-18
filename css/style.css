@@ -84,14 +84,14 @@ input[type="text"], textarea, input[type="password"]{
     border: 1px solid #aaa;
     padding: 7px 12px;
     border-radius: 4px;
-    width: 90%;
+    width: 100%;
     font-family: arial;
 }
 select{
     border: 1px solid #aaa;
     padding: 7px 12px;
     border-radius: 4px;
-    width: 90%;
+    width: 100%;
 }
 
 
@@ -440,3 +440,54 @@ table#view-form tr:hover {
     display: inline-block;
     width: unset;
 }
+
+
+/*Form styling*/
+    .form-row {
+        display: flex;
+        padding: 10px 0px;
+    }
+    .form-col {
+        position: relative;
+        display: table-column;
+        box-sizing: border-box;
+        /*padding: 0px 40px;*/
+        width: -webkit-fill-available;
+    }
+    .w-50 {
+        width: 50%;
+    }
+    .form-col label {
+        position: relative;
+        top: 25%;
+    }
+    .form-btn {
+        display: table-row;
+        text-align: center;
+        width: 100%;
+    }
+    .form-label {
+        box-sizing: border-box;
+        padding-right: 20px;
+        text-align: left;
+    }
+    .form-radio-btn{
+        display: inline;
+        padding-right: 10%;
+    }
+    .p-lr-10{
+        padding: 0px 10px;
+    }
+    .p-tb-5{
+        padding: 5px 0px;
+    }
+    .btn-submit {
+        margin: auto 5px;
+    }
+    .btn-reset {
+        margin: auto 5px;
+    }
+    span.help-block.form-error {
+        display: block;
+        padding: 10px 0px;
+    }

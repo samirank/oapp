@@ -11,116 +11,181 @@ if(isset($_SESSION['log_id'])){
 	<link href="css/patientreg.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="container">
-		<table id="wrap" cellspacing="0" border="0" cellpadding="0">
-			<tr>
-				<td colspan="2" id="header"><h1>Online Appointment System</h1></td>
-			</tr>
-			<tr>
-				<td colspan="2" id="menu">
-					<ul>
-						<li><a class="menu-item-active" href="index.php">Home</a></li>
-						<li><a href="about.php">About</a></li>
-						<?php if (isset($_SESSION['log_id'])) {
-							echo "<li><a href='dashboard.php'>Dashboard</a></li>";
-						} else {
-							echo "<li><a href='login.php'>Login</a></li>";
-						} ?>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td class="content">
-					<h1>Patient Details</h1>
-					<table id="tab-form">
-						<tr>
-							<td></td>
-							<td><span class="msg-alert">
-								<?php if(isset($_SESSION['msg'])){
-									echo $_SESSION['msg'];
-									unset($_SESSION['msg']);
-								} ?>
-							</span></td>
-						</tr>
-						<form action="process.php" method="POST">
+	<style>
 
-							<tr>
-								<td>Patient Name :</td>
-								<td><input type="text" name="name" placeholder="Enter your full name" autofocus></td>
-							</tr>
-							<tr>
-								<td>Username</td>
-								<td><input type="text" name="username" placeholder="Select username"></td>
-							</tr>
-							<tr>
-								<td>Address</td>
-								<td><textarea name="address"></textarea></td>
-							</tr>
-							<tr>
-								<td>Mobile number</td>
-								<td><input type="text" name="mobileno" maxlength="10"></td>
-							</tr>
-							<tr>
-								<td>Guardian Name</td>
-								<td><input type="text" name="guardian"></td>
-							</tr>
-							<tr>
-								<td>Emergency contact number</td>
-								<td><input type="text" name="emcont" maxlength="10"></td>
-							</tr>
-							<tr>
-								<td>Gender</td>
-								<td>
-									male
+</style>
+<div id="container">
+	<table id="wrap" cellspacing="0" border="0" cellpadding="0">
+		<tr>
+			<td colspan="2" id="header"><h1>Online Appointment System</h1></td>
+		</tr>
+		<tr>
+			<td colspan="2" id="menu">
+				<ul>
+					<li><a class="menu-item-active" href="index.php">Home</a></li>
+					<li><a href="about.php">About</a></li>
+					<?php if (isset($_SESSION['log_id'])) {
+						echo "<li><a href='dashboard.php'>Dashboard</a></li>";
+					} else {
+						echo "<li><a href='login.php'>Login</a></li>";
+					} ?>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td class="content">
+				<h1>Patient Registration</h1>
+				<div id="tab-form" style="display: table;">
+					<form action="process.php" method="POST">
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Patient Name</label>
+							</div>
+							<div class="form-col" ">
+								<input type="text" name="name" data-validation="required custom" data-validation-regexp="^([a-zA-Z]+\s)([a-zA-Z])+$" data-sanitize="trim capitalize"  data-validation-allowing=" " placeholder="Enter your full name" autofocus>
+							</div>
+						</div>
+
+						
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Username</label>
+							</div>
+							<div class="form-col" ">
+								<input type="text" name="username" data-validation="required alphanumeric server" data-validation-url="form_validate.php"  data-validation-allowing="_" data-sanitize="trim lower" placeholder="Select username">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Address</label>
+							</div>
+							<div class="form-col" ">
+								<textarea data-validation="required" data-validation-error-msg="Please enter your address" name="address"></textarea>
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Mobile number</label>
+							</div>
+							<div class="form-col" ">
+								<input data-validation="required number length" data-validation-length="10" data-validation-error-msg="Please enter 10 digit mobile number" type="text" name="mobileno" maxlength="10">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Guardian Name</label>
+							</div>
+							<div class="form-col" ">
+								<input type="text" data-validation="required" data-validation-error-msg="Please enter your guardian name" name="guardian">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Emergency contact number</label>
+							</div>
+							<div class="form-col" ">
+								<input type="text" data-validation="required number length" data-validation-length="10" data-validation-error-msg="Please enter 10 digit mobile number" name="emcont" maxlength="10">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Gender</label>
+							</div>
+							<div class="form-col">
+								<div class="form-radio-btn">
 									<input type="radio" name="gender" value="male">
-									female
+									male
+								</div>
+								<div class="form-radio-btn">
 									<input type="radio" name="gender" value="female">
+									female
+								</div>
+								<div class="form-radio-btn">
+									<input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="gender" value="other">
 									Others
-									<input type="radio" name="gender" value="other">
-								</td>
-							</tr>
-							<tr>
-								<td>Blood group</td>
-								<td>
-									<select name="bgroup">
-										<option value="" selected disabled>Select</option>
-										<option value="A+">A+</option>
-										<option value="A-">A-</option>
-										<option value="B+">B+</option>
-										<option value="B-">B-</option>
-										<option value="AB+">AB+</option>
-										<option value="AB-">AB-</option>
-										<option value="O+">O+</option>
-										<option value="O-">O-</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>Current medication</td>
-								<td><input type="text" name="cur_medication"></td>
-							</tr>
-							<tr>
-								<td>Email id</td>
-								<td><input type="text" name="email_id"></td>
-							</tr>
-							
-							<tr>
-								<td>Password</td>
-								<td><input type="password" name="pass"></td>
-							</tr>
-							<tr>
-								<td>Confirm Password</td>
-								<td><input type="password" name="cnf_pass"></td>
-							</tr>
-							
-							<tr>
-								<td></td>
-								<td>
-									<button class="btn" type="submit" name="patientreg">Submit</button>
-									<button class="btn" type="reset">Reset</button>
-								</td>
-							</tr>
-						</form>
-					</table>
-				</td>
-				<?php include('master/foot.php'); ?>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Blood group</label>
+							</div>
+							<div class="form-col">
+								<select name="bgroup" data-validation="required" data-validation-error-msg="Please select blood group">
+									<option value="" selected disabled>Select</option>
+									<option value="A+">A+</option>
+									<option value="A-">A-</option>
+									<option value="B+">B+</option>
+									<option value="B-">B-</option>
+									<option value="AB+">AB+</option>
+									<option value="AB-">AB-</option>
+									<option value="O+">O+</option>
+									<option value="O-">O-</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Current medication</label>
+							</div>
+							<div class="form-col">
+								<input type="text" name="cur_medication">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Email id</label>
+							</div>
+							<div class="form-col">
+								<input type="text" data-validation="email" name="email_id">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Password</label>
+							</div>
+							<div class="form-col">
+								<input type="password" data-validation="strength" data-validation-strength="2" name="pass">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-label w-50">
+								<label for="">Confirm password</label>
+							</div>
+							<div class="form-col">
+								<input type="password" data-validation="confirmation" data-validation-confirm="pass" data-validation-error-msg="Entered value do not match with your password." name="cnf_pass">
+							</div>
+						</div>
+
+
+						<div class="form-row">
+							<div class="form-col form-btn">
+								<button class="btn btn-submit" type="submit">Submit</button>
+								<button class="btn btn-submit" type="reset">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</td>
+			<?php include('master/foot.php'); ?>
