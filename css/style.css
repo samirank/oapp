@@ -1,97 +1,102 @@
 * { padding: 0; margin: 0; }
 html, body {
-    font-family: "Roboto", sans-serif !important;
-    min-height: 100% !important;
-    height: 100%;
+	font-family: "Roboto", sans-serif !important;
+	min-height: 100% !important;
+	height: 100%;
 }
 div#container{
-    width: 1024px;
-    min-height: 100%;
-    margin:0 auto;
-    overflow: hidden;
-    box-shadow: 0px 0px 12px #0202025c;
+	width: 1024px;
+	min-height: 100%;
+	margin:0 auto;
+	overflow: hidden;
+	box-shadow: 0px 0px 12px #0202025c;
 }
 table{
-    width: 100%;
-    font-family: arial;
-    font-size: 13px;
+	width: 100%;
+	font-family: arial;
+	font-size: 13px;
 }
 #wrap td{
-    border: 1px solid #bbb;
-    vertical-align: top;
+	border: 1px solid #bbb;
+	vertical-align: top;
 }
 #wrap td{
-    width: 20%;
-    padding: 10px 15px;
+	width: 20%;
+	padding: 10px 15px;
 }
 #wrap td+td{
-    width: 70%;
-    padding: 10px 15px;
+	width: 70%;
+	padding: 10px 15px;
+}
+#tab-form{
+	display: table;
+	width: 80%;
+	margin: 20px auto;
 }
 #tab-form td{
-    border:none;
-    padding: 10px 0;
-    vertical-align: middle;
+	border:none;
+	padding: 10px 0;
+	vertical-align: middle;
 }
 #view-form td, #view-form th{
-    padding: 3px;
-    white-space: nowrap;
+	padding: 3px;
+	white-space: nowrap;
 }
 #view-form th{
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #333;
+	background-color: #333;
+	color: #fff;
+	border: 1px solid #333;
 }
 #view-form_length select {
-    width: unset;
+	width: unset;
 }
 #header{
-    height: 180px;
-    padding: 10px 15px;
-    background: linear-gradient(to right, rgba(108, 92, 231, 0.85), rgba(162, 155, 254, 0.85)), url(../images/header.jpg);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: fixed;
+	height: 180px;
+	padding: 10px 15px;
+	background: linear-gradient(to right, rgba(108, 92, 231, 0.85), rgba(162, 155, 254, 0.85)), url(../images/header.jpg);
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-attachment: fixed;
 
 }
 #menu{
-    padding: 10px 15px;
-    background: #a29bfe;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #6c5ce7, #a29bfe);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #6c5ce7, #a29bfe); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: #fff;
+	padding: 10px 15px;
+	background: #a29bfe;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #6c5ce7, #a29bfe);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #6c5ce7, #a29bfe); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: #fff;
 }
 #footer{
-    height: 50px;
-    padding: 10px 15px;
-    background-color: #444;
+	height: 50px;
+	padding: 10px 15px;
+	background-color: #444;
 }
 h1{
-    border-bottom: 2px solid #a29bfe;
+	border-bottom: 2px solid #a29bfe;
 }
 li{
    /* margin-top: 15px;
    margin-bottom: 15px;*/
 }
 a{
-    color: #222;
-    text-decoration: none;
-    text-transform: capitalize;
+	color: #222;
+	text-decoration: none;
+	text-transform: capitalize;
 }
 
 input[type="text"], textarea, input[type="password"]{
-    border: 1px solid #aaa;
-    padding: 7px 12px;
-    border-radius: 4px;
-    width: 100%;
-    font-family: arial;
+	border: 1px solid #aaa;
+	padding: 7px 12px;
+	border-radius: 4px;
+	width: 100%;
+	font-family: arial;
 }
 select{
-    border: 1px solid #aaa;
-    padding: 7px 12px;
-    border-radius: 4px;
-    width: 100%;
+	border: 1px solid #aaa;
+	padding: 7px 12px;
+	border-radius: 4px;
+	width: 100%;
 }
 
 
@@ -101,393 +106,393 @@ select{
 
 /***Custom CSS by Samiran***/
 #wrap td{
-    border: unset;
+	border: unset;
 }
 .content{
-    height: 600px;
-    min-height: 600px;
+	height: 600px;
+	min-height: 600px;
 }
 
 /*Header Styles*/
 #header h1{
-    position: relative;
-    left: 0;
-    top: 45px;
-    color: #fff;
-    font-size: 40;
-    text-align: center;
-    border: none;
-    text-shadow: 6px 6px 30px #2f2f2f3d;
+	position: relative;
+	left: 0;
+	top: 45px;
+	color: #fff;
+	font-size: 40;
+	text-align: center;
+	border: none;
+	text-shadow: 6px 6px 30px #2f2f2f3d;
 }
 
 
 /*Side Menu Styles*/
 #pane{
-    background-color: #eee;
+	background-color: #eee;
 }
 #pane ul{
-    list-style: none;
-    padding: 0px;
+	list-style: none;
+	padding: 0px;
 }
 #pane li{
-    border-bottom: 1px solid #9af;
+	border-bottom: 1px solid #9af;
 }
 #pane li:hover{
-    /*background-color: #6c5ce7;*/
+	/*background-color: #6c5ce7;*/
 }
 #pane a{
-    display: block;
-    padding: 15px;
-    font-weight: bold;
-    font-size: 15px;
-    color: #6c5ce7;
+	display: block;
+	padding: 15px;
+	font-weight: bold;
+	font-size: 15px;
+	color: #6c5ce7;
 }
 #pane li:hover>a{
-    background-color: #6c5ce7;
-    color: #fff;
+	background-color: #6c5ce7;
+	color: #fff;
 }
 
 
 /*Top Navigation Styles*/
 td#menu {
-    position: relative;
-    padding: 0px 15px;
-    border: 0px;
+	position: relative;
+	padding: 0px 15px;
+	border: 0px;
 }
 #menu ul{
-    background-color: #dddddd;
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
+	background-color: #dddddd;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
 }
 
 #menu li{
-    display: inline;
-    float: left;
-    /*margin: 5px 10px 5px 10px;*/
+	display: inline;
+	float: left;
+	/*margin: 5px 10px 5px 10px;*/
 }
 #menu a{
-    display: block;
-    padding: 14px 25px;
-    color: #fff;
-    font-size: 16px;
+	display: block;
+	padding: 14px 25px;
+	color: #fff;
+	font-size: 16px;
 }
 #menu a:hover{
-    background-color: #a29bfe;
-    color: #fff;
+	background-color: #a29bfe;
+	color: #fff;
 }
 #menu a.menu-item-active{
-    background-color: #fff;
-    color: #6c5ce7;
+	background-color: #fff;
+	color: #6c5ce7;
 }
 #pane li.menu-end-item{
-    border: none;
+	border: none;
 }
 
 /*Footer*/
 td#footer{
-    text-align: center;
-    color: #fff;
-    padding-top: 16px;
+	text-align: center;
+	color: #fff;
+	padding-top: 16px;
 }
 
 /*Welcome text*/
 .welcome-text{
-    display: flex;
-    position: absolute;
-    left: 230px;
-    top: 30%;
-    font-size: 15;
-    font-weight: bold; 
+	display: flex;
+	position: absolute;
+	left: 230px;
+	top: 30%;
+	font-size: 15;
+	font-weight: bold; 
 }
 .menu-right{
-    display: flex;
-    position: absolute;
-    right: 15px;
-    top: 28%;
-    font-size: 15;
-    color: #dcdcdc;
-    /*font-weight: bold;*/
+	display: flex;
+	position: absolute;
+	right: 15px;
+	top: 28%;
+	font-size: 15;
+	color: #dcdcdc;
+	/*font-weight: bold;*/
 }
 
 /*Logout Button*/
 a#logout-btn{
- display: block;
- background: #fd79a8;
- background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
- background: linear-gradient(to right, #e84393e3, #fd79a8);
- width: 86px;
- height: unset;
- font-size: unset;
- font-weight: normal;
- text-align: center;
- margin: -7px 0px 0px 10px;
- box-sizing: border-box;
- padding: 9px 15px;
- color: #fff;
- border-radius: 37px;
- box-shadow: 8px 8px 34px 0px #00000029;
+	display: block;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: linear-gradient(to right, #e84393e3, #fd79a8);
+	width: 86px;
+	height: unset;
+	font-size: unset;
+	font-weight: normal;
+	text-align: center;
+	margin: -7px 0px 0px 10px;
+	box-sizing: border-box;
+	padding: 9px 15px;
+	color: #fff;
+	border-radius: 37px;
+	box-shadow: 8px 8px 34px 0px #00000029;
 }
 a#logout-btn:hover{
-    background: #e84393;
+	background: #e84393;
 }
 
 
 /*Breadcrumb Styles*/
 ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-    background-color: #eee;
-    margin-bottom: 20px;
+	padding: 10px 16px;
+	list-style: none;
+	background-color: #eee;
+	margin-bottom: 20px;
 }
 
 ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-    color: #888;
+	display: inline;
+	font-size: 18px;
+	color: #888;
 }
 
 ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
+	padding: 8px;
+	color: black;
+	content: "/\00a0";
 }
 
 ul.breadcrumb li a {
-    color: #6c5ce7;
-    text-decoration: none;
+	color: #6c5ce7;
+	text-decoration: none;
 }
 
 ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+	color: #01447e;
+	text-decoration: underline;
 }
 
 
 /*Button Style*/
 .btn{
-    background: #fd79a8;
-    background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: linear-gradient(to right, #e84393e3, #fd79a8);
-    width: 86px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 9px 15px;
-    color: #fff;
-    border: unset;
-    border-radius: 20px;
-    border-color: #fff0;
-    box-shadow: 8px 8px 34px 0px #00000029;
-    outline-color: #fff0;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: linear-gradient(to right, #e84393e3, #fd79a8);
+	width: 86px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 9px 15px;
+	color: #fff;
+	border: unset;
+	border-radius: 20px;
+	border-color: #fff0;
+	box-shadow: 8px 8px 34px 0px #00000029;
+	outline-color: #fff0;
 }
 .btn:hover{
-    background: #e84393;
+	background: #e84393;
 }
 
 .btn-a{
-    display: block;
-    background: #fd79a8;
-    background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: linear-gradient(to right, #e84393e3, #fd79a8);
-    width: 86px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 9px 15px;
-    color: #fff;
-    border: unset;
-    border-radius: 20px;
-    border-color: #fff0;
-    box-shadow: 8px 8px 34px 0px #00000029;
-    outline-color: #fff0;
+	display: block;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: linear-gradient(to right, #e84393e3, #fd79a8);
+	width: 86px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 9px 15px;
+	color: #fff;
+	border: unset;
+	border-radius: 20px;
+	border-color: #fff0;
+	box-shadow: 8px 8px 34px 0px #00000029;
+	outline-color: #fff0;
 }
 .btn-a:hover{
-    background: #e84393;
+	background: #e84393;
 }
 .btn-d{
-    display: inline-block;
-    background: #fd79a8;
-    background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: #d24141;
-    width: 45px;
-    font-size: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 5px;
-    color: #fff;
-    border: unset;
-    border-radius: 20px;
-    border-color: #fff0;
-    box-shadow: 8px 8px 34px 0px #00000029;
-    outline-color: #fff0;
-    cursor: pointer;
+	display: inline-block;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: #d24141;
+	width: 45px;
+	font-size: 10px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 5px;
+	color: #fff;
+	border: unset;
+	border-radius: 20px;
+	border-color: #fff0;
+	box-shadow: 8px 8px 34px 0px #00000029;
+	outline-color: #fff0;
+	cursor: pointer;
 }
 input.btn-d:disabled {
-    background-color: #999;
-    cursor: default;
+	background-color: #999;
+	cursor: default;
 }
 button.btn-d:disabled {
-    background-color: #999;
-    cursor: default;
+	background-color: #999;
+	cursor: default;
 }
 .btn-e{
-    display: inline-block;
-    background: #fd79a8;
-    background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
-    background: #6c5ce7;
-    width: 45px;
-    font-size: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 5px;
-    color: #fff;
-    border: unset;
-    border-radius: 20px;
-    border-color: #fff0;
-    box-shadow: 8px 8px 34px 0px #00000029;
-    outline-color: #fff0;
-    cursor: pointer;
+	display: inline-block;
+	background: #fd79a8;
+	background: -webkit-linear-gradient(to right, #e84393e3, #fd79a8);
+	background: #6c5ce7;
+	width: 45px;
+	font-size: 10px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 5px;
+	color: #fff;
+	border: unset;
+	border-radius: 20px;
+	border-color: #fff0;
+	box-shadow: 8px 8px 34px 0px #00000029;
+	outline-color: #fff0;
+	cursor: pointer;
 }
 .btn-lg {
-    width: 140px;
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-right: 20px;
+	width: 140px;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-right: 20px;
 }
 
 /*Error Message*/
 .msg-alert{
-    color: #4CAF50;
-    font-weight: bold;
-    font-size: 14px;
+	color: #4CAF50;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 table#view-form td{
-    width: auto;
-    text-align: center;
-    padding: 10px 15px;
-    border: unset;
-    vertical-align: middle;
-    border-bottom: 1px solid #eee;
+	width: auto;
+	text-align: center;
+	padding: 10px 15px;
+	border: unset;
+	vertical-align: middle;
+	border-bottom: 1px solid #eee;
 }
 
 a.doc-anchor{
-  display: block;
-  width: auto;
-  align-self: center;
-  color: #6c5ce7;
-  border: unset;
-  text-decoration: underline;
-  padding: 5px 0px;
+	display: block;
+	width: auto;
+	align-self: center;
+	color: #6c5ce7;
+	border: unset;
+	text-decoration: underline;
+	padding: 5px 0px;
 }
 table#view-form tr:hover {
-    background-color: #eee;
+	background-color: #eee;
 }
 #view-form_length select{
-    margin-bottom: 8px;
-    padding: 5px 10px;
+	margin-bottom: 8px;
+	padding: 5px 10px;
 }
 #view-form_filter input[type="search"]{
-    border: 1px solid #aaa;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-family: arial;
+	border: 1px solid #aaa;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-family: arial;
 }
 
 .edit-dept {
-    display: flex;
-    position: relative;
-    padding: 20px 10px;
-    background-color: #eee;
-    font-size: 16px;
-    margin-bottom: 25px;
+	display: flex;
+	position: relative;
+	padding: 20px 10px;
+	background-color: #eee;
+	font-size: 16px;
+	margin-bottom: 25px;
 }
 .edit-dept form{
-    display: inline;
-    margin-left: 70px;
-    position: absolute;
-    right: 10px;
-    top: 23%;
+	display: inline;
+	margin-left: 70px;
+	position: absolute;
+	right: 10px;
+	top: 23%;
 }
 
 /*Profile Picture*/
 .profile-pic {
-    position: relative;
+	position: relative;
 }
 .profile-pic img {
-    position: absolute;
-    width: 200px;
-    right: 16%;
-    top: 34px;
+	position: absolute;
+	width: 200px;
+	right: 16%;
+	top: 34px;
 }
 .profile-pic a {
-    position: absolute;
-    width: 190px;
-    right: 17%;
-    top: 250px;
+	position: absolute;
+	width: 190px;
+	right: 17%;
+	top: 250px;
 }
 
 /*Change Password*/
 .change-pass{
-    display: flex;
-    background-color: #beceea;
-    padding: 12px 5px;
+	display: flex;
+	background-color: #beceea;
+	padding: 12px 5px;
 }
 .change-pass input{
-    display: inline-block;
-    width: 178px;
+	display: inline-block;
+	width: 178px;
 }
 .change-pass button{
-    display: inline-block;
-    width: unset;
+	display: inline-block;
+	width: unset;
 }
 
 
 /*Form styling*/
-    .form-row {
-        display: flex;
-        padding: 10px 0px;
-    }
-    .form-col {
-        position: relative;
-        display: table-column;
-        box-sizing: border-box;
-        /*padding: 0px 40px;*/
-        width: -webkit-fill-available;
-    }
-    .w-50 {
-        width: 50%;
-    }
-    .form-col label {
-        position: relative;
-        top: 25%;
-    }
-    .form-btn {
-        display: table-row;
-        text-align: center;
-        width: 100%;
-    }
-    .form-label {
-        box-sizing: border-box;
-        padding-right: 20px;
-        text-align: left;
-    }
-    .form-radio-btn{
-        display: inline;
-        padding-right: 10%;
-    }
-    .p-lr-10{
-        padding: 0px 10px;
-    }
-    .p-tb-5{
-        padding: 5px 0px;
-    }
-    .btn-submit {
-        margin: auto 5px;
-    }
-    .btn-reset {
-        margin: auto 5px;
-    }
-    span.help-block.form-error {
-        display: block;
-        padding: 10px 0px;
-    }
+.form-row {
+	display: flex;
+	padding: 10px 0px;
+}
+.form-col {
+	position: relative;
+	display: table-column;
+	box-sizing: border-box;
+	/*padding: 0px 40px;*/
+	width: -webkit-fill-available;
+}
+.w-50 {
+	width: 50%;
+}
+.form-col label {
+	position: relative;
+	top: 25%;
+}
+.form-btn {
+	display: table-row;
+	text-align: center;
+	width: 100%;
+}
+.form-label {
+	box-sizing: border-box;
+	padding-right: 20px;
+	text-align: left;
+}
+.form-radio-btn{
+	display: inline;
+	padding-right: 10%;
+}
+.p-lr-10{
+	padding: 0px 10px;
+}
+.p-tb-5{
+	padding: 5px 0px;
+}
+.btn-submit {
+	margin: auto 5px;
+}
+.btn-reset {
+	margin: auto 5px;
+}
+span.help-block.form-error {
+	display: block;
+	padding: 10px 0px;
+}

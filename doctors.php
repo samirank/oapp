@@ -18,8 +18,7 @@ include 'master/db.php';
 <div>
     <a class="btn-a btn-lg" href="doc_reg.php">Add Doctor</a>
 </div>
-<form action="process.php" method="post">
-    <table id="view-form" cellspacing="0">
+<table id="view-form" cellspacing="0">
         <thead>
             <tr>
                 <th>Slno</th>
@@ -63,7 +62,6 @@ include 'master/db.php';
             ?>
         </tbody>
     </table>
-</form>
 </td>
 <?php
 include 'master/foot.php';
