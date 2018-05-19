@@ -31,8 +31,8 @@
             Current name : &nbsp; <span style="font-weight: bold;"><?php echo $row['dept_name']; ?></span>
             <form action="process.php" method="POST">
                 <label for="new_name">Enter new name:</label>
-                <input type="text" name="dept_id" value="<?php echo $row['dept_id']; ?>" hidden>
-                <input style="width: unset;" type="text" name="new_name">
+                <input type="hidden" name="dept_id" value="<?php echo $row['dept_id']; ?>">
+                <input type="text" style="width: unset;" name="new_name" data-validation="required" data-validation-error-msg=" ">
                 <button class="btn" type="submit" name="edit_dept_name">Submit</button>
             </form>
         </div>
@@ -45,7 +45,7 @@
             <div class="change-pass" style="display: block; text-align: center; margin-bottom: 20px;">
                 <form action="process.php" method="POST">
                  <b> Enter department name:</b>
-                 <input style="width: unset;" type="text" name="new_name" autofocus>
+                 <input style="width: unset;" type="text" name="new_name" data-validation="required" data-validation-error-msg="Required" autofocus>
                  <button class="btn" type="submit" name="add_dept">Submit</button>
              </form>
          </div>

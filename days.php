@@ -6,11 +6,6 @@ if (!(isset($_GET['edit']) && $_SESSION['log_role']=="admin")) {
 }
 ?>
 <td id="content">
-	<?php if(isset($_SESSION['msg'])){
-		echo $_SESSION['msg'];
-		unset($_SESSION['msg']);
-	}
-	?>
 	<style>
 	select {
 		width: unset;
@@ -22,8 +17,20 @@ if (!(isset($_GET['edit']) && $_SESSION['log_role']=="admin")) {
 	<li>Days</li>
 </ul>
 
+<!-- Display message -->
+<?php if (isset($_SESSION['msg'])): ?>
+    <div style="padding: 20px 2px;">
+        <span class="msg-alert">
+            <?php 
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+            ?>
+        </span>
+    </div>
+<?php endif ?>
+
 <!-- Test Name -->
-<div>
+<div style="font-size: 16; font-weight: bold;">
 	Test Name :
 
 	<?php 
@@ -36,12 +43,12 @@ if (!(isset($_GET['edit']) && $_SESSION['log_role']=="admin")) {
 		// print_r($row);		
 	?>
 </div>
-<div>
-	Available days :<?php echo $row['days']; ?>
+<div style="padding: 20px 0px;">
+	Available days :&nbsp;<span style="    color: #e84393; font-weight: bold;"><?php echo $row['days']; ?></span>
 </div>
 <div>
 	<form action="process.php" method="POST">
-		<select name="day">
+		<select name="day" data-validation="required" data-validation-error-msg="Required">
 			<option value="" selected disabled>Select a day</option>
 			<option value="Mon">Monday</option>
 			<option value="Tue">Tuesday</option>
@@ -51,7 +58,7 @@ if (!(isset($_GET['edit']) && $_SESSION['log_role']=="admin")) {
 			<option value="Sat">Saturday</option>
 			<option value="Sun">Sunday</option>
 		</select>
-		<select name="action">
+		<select name="action" data-validation="required" data-validation-message="Select">
 			<option value="" selected disabled>add/delete</option>
 			<option value="add">Add</option>
 			<option value="del">Delete</option>
