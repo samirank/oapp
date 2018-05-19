@@ -113,8 +113,7 @@ if (mysqli_num_rows($result)==1) {
 <?php } ?>
 <?php endif ?>
 
-<form action="process.php" method="post">
-    <table id="view-form" cellspacing="0">
+<table id="view-form" cellspacing="0">
         <thead>
             <tr>
                 <th>id</th>
@@ -163,8 +162,7 @@ if (mysqli_num_rows($result)==1) {
                 ?>
             </tbody>
         </table>
-    </form>
-</td>
+    </td>
 <?php
 include 'master/foot.php';
 ?>             

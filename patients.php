@@ -7,8 +7,7 @@ include 'master/db.php';
         <li><a href="dashboard.php">Dashboard</a></li>
         <li>Patients</li>
     </ul>
-    <form action="process.php" method="post">
-        <table id="view-form" cellspacing="0">
+    <table id="view-form" cellspacing="0">
             <thead>
                 <tr>
                     <th>id</th>
@@ -49,6 +48,5 @@ include 'master/db.php';
                 ?>
             </tbody>
         </table>
-    </form>
-</td>
+    </td>
 <?php include 'master/foot.php'; ?>             

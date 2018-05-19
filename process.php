@@ -230,14 +230,25 @@ if (isset($_POST['change_doc_profile'])) {
     $d_gen = $_POST['d_gen'];
     $user_id = $_POST['user_id'];
     
-    $sql = "UPDATE `doctors` SET `doc_name`='$dname',`address`='$dadd',`ph_no`='$dphno',`designation`='$d_desig',`exp`='$d_exp',`gender`='$d_gen' WHERE user_id = '$user_id'";
 
-    if (mysqli_query($con,$sql)) {
+    mysqli_autocommit($con,false);
+    $sql = "UPDATE users SET `user_name`='$uname' WHERE user_id = '$user_id'";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }
+
+    $sql = "UPDATE `doctors` SET `doc_name`='$dname',`address`='$dadd',`ph_no`='$dphno',`designation`='$d_desig',`exp`='$d_exp',`gender`='$d_gen' WHERE user_id = '$user_id'";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }else{
+        mysqli_commit($con);
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
-    }else{
-       die(mysqli_error($con));
-   }
+    }
+
+
 }
 // Edit patient profile
 if (isset($_POST['edit_patient'])) {
@@ -252,14 +263,23 @@ if (isset($_POST['edit_patient'])) {
     $email_id = $_POST['email_id'];
     $user_id = $_POST['user_id'];
 
-    $sql = "UPDATE `patients` SET `name`='$name',`address`='$address',`mobileno`='$mobileno',`guardian`='$guardian',`emergencycontact`='$emergencycontact',`bgroup`='$bgroup',`cur_medication`='$cur_medication',`email_id`='$email_id' WHERE user_id='$user_id'";
 
-    if (mysqli_query($con,$sql)) {
+    mysqli_autocommit($con,false);
+    $sql = "UPDATE users SET `user_name`='$username' WHERE user_id = '$user_id'";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }
+
+    $sql = "UPDATE `patients` SET `name`='$name',`address`='$address',`mobileno`='$mobileno',`guardian`='$guardian',`emergencycontact`='$emergencycontact',`bgroup`='$bgroup',`cur_medication`='$cur_medication',`email_id`='$email_id' WHERE user_id='$user_id'";
+    if(!mysqli_query($con,$sql)){
+        echo (mysqli_error($con));
+        mysqli_rollback($con);
+    }else{
+        mysqli_commit($con);
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
-    }else{
-       echo mysqli_error($con);
-   }
+    }
 }
 
 // Suspend account

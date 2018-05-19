@@ -346,7 +346,7 @@ $json = json_encode($json);
 
 <!-- For laboratorian Profile -->
 <?php if ($row['user_role']=='laboratorian'): ?>
-
+    <?php header("location: profile.php?edit=$user_id") ?>
 <?php endif ?>
 </td>
 <?php include 'master/foot.php'; 
