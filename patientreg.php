@@ -35,7 +35,7 @@ if(isset($_SESSION['log_id'])){
 		<tr>
 			<td class="content">
 				<h1>Patient Registration</h1>
-				<div id="tab-form" style="display: table;">
+				<div id="tab-form">
 					<form action="process.php" method="POST">
 
 						<div class="form-row">
