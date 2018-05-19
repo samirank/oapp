@@ -242,6 +242,7 @@ if (isset($_POST['change_doc_profile'])) {
 // Edit patient profile
 if (isset($_POST['edit_patient'])) {
     $name = $_POST['name'];
+    $username =$_POST['uname'];
     $address = $_POST['address'];
     $mobileno = $_POST['mobileno'];
     $guardian = $_POST['guardian'];
@@ -257,7 +258,7 @@ if (isset($_POST['edit_patient'])) {
         $_SESSION['msg'] = "Profile Updated";
         header("location: profile.php?id=$user_id");
     }else{
-       die(mysqli_error($con));
+       echo mysqli_error($con);
    }
 }
 

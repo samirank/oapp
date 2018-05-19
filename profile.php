@@ -5,11 +5,13 @@ include 'master/db.php';
 if (isset($_GET['id'])) {
 	$result = mysqli_fetch_array(mysqli_query($con,"SELECT user_role FROM users WHERE user_id = {$_GET['id']}"));
 	$role = $result[0];
+}else{
+	$role = $_SESSION['log_role'];
 }
 
 // View Exception for admin
 if ($_SESSION['log_role']=="admin") {
-	if ($role!="laboratorian") {
+	if (($role!="laboratorian")&&(isset($_GET['id']))) {
 		$user_id = $_GET['id'];
 	}else{
 		header("location: laboratorian.php");
@@ -18,27 +20,23 @@ if ($_SESSION['log_role']=="admin") {
 
 // View Exception for patient
 if ($_SESSION['log_role']=="patient") {
-	if($role=="doctor"){
+	if(($role=="doctor")&&(isset($_GET['id']))){
 		$user_id = $_GET['id'];
 	}
 }
 
 // View Exception for doctor
 if ($_SESSION['log_role']=="doctor") {
-	if($role=="patient"){
+	if(($role=="patient")&&(isset($_GET['id']))){
 		$user_id = $_GET['id'];
 	}
 }
 
 // View Exception for Laboratorian
 if ($_SESSION['log_role']=="laboratorian") {
-	if (isset($_GET['id'])) {
-		$result = mysqli_fetch_array(mysqli_query($con,"SELECT user_role FROM users WHERE user_id = {$_GET['id']}"));
-		$role = $result[0];
-		if($role=="patient"){
+		if(($role=="patient")&&(isset($_GET['id']))){
 			$user_id = $_GET['id'];
 		}
-	}
 }
 
 
