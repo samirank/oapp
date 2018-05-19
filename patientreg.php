@@ -43,7 +43,7 @@ if(isset($_SESSION['log_id'])){
 								<label for="">Patient Name</label>
 							</div>
 							<div class="form-col" ">
-								<input type="text" name="name" data-validation="required custom" data-validation-regexp="^([a-zA-Z]+\s)([a-zA-Z])+$" data-sanitize="trim capitalize"  data-validation-allowing=" " placeholder="Enter your full name" autofocus>
+								<input type="text" name="name" data-validation="required custom" data-validation-regexp="^([a-zA-Z]+\s)([a-zA-Z])+$" data-sanitize="trim capitalize"  data-validation-allowing=" " data-validation-error-msg="Enter first and last name only" placeholder="Enter your full name" autofocus>
 							</div>
 						</div>
 
