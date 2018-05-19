@@ -104,38 +104,38 @@ if(isset($_POST['patientreg'])){
     $email=$_POST["email_id"];
     $password=$_POST["pass"];
 
-    // $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'patient', '$password', now())";
-    // mysqli_autocommit($con,false);
-    // if(!mysqli_query($con, $sql)){
-    //     echo mysqli_error($con);
-    //     mysqli_rollback($con);
-    // }
+    $sql="INSERT INTO `users`(`user_name`, `user_role`, `password`, `date_of_reg`) VALUES ('$uname', 'patient', '$password', now())";
+    mysqli_autocommit($con,false);
+    if(!mysqli_query($con, $sql)){
+        echo mysqli_error($con);
+        mysqli_rollback($con);
+    }
 
-    // $log_id = mysqli_insert_id($con);
+    $log_id = mysqli_insert_id($con);
 
-    // $sql="INSERT INTO `patients`(`name`, `address`, `mobileno`, `guardian`, `emergencycontact`, `gender`, `bgroup`, `cur_medication`, `email_id`, `user_id`) VALUES ('$name','$address','$mobileno','$gname','$ecnumber','$gender','$bgroup','$cur_med','$email', LAST_INSERT_ID())";
-    // if(!mysqli_query($con, $sql)){
-    //     echo mysqli_error($con);
-    //     mysqli_rollback($con);
-    // }
-    // else{
-    //     mysqli_commit($con);
-    //     $_SESSION['msg']="You are registered.";
+    $sql="INSERT INTO `patients`(`name`, `address`, `mobileno`, `guardian`, `emergencycontact`, `gender`, `bgroup`, `cur_medication`, `email_id`, `user_id`) VALUES ('$name','$address','$mobileno','$gname','$ecnumber','$gender','$bgroup','$cur_med','$email', LAST_INSERT_ID())";
+    if(!mysqli_query($con, $sql)){
+        echo mysqli_error($con);
+        mysqli_rollback($con);
+    }
+    else{
+        mysqli_commit($con);
+        $_SESSION['msg']="You are registered.";
 
-    //     $sql="SELECT *  from users where user_id = $log_id";
-    //     $result = mysqli_query($con,$sql);
-    //     if(mysqli_num_rows($result)==1){
-    //         $row = mysqli_fetch_assoc($result);
-    //         $_SESSION['log_id']=$log_id;
-    //         $_SESSION['log_uname']=$row['user_name'];
-    //         $_SESSION['log_role']=$row['user_role'];
-    //         if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
-    //             header("location: book.php");
-    //         }else{
-    //             header("location: dashboard.php");
-    //         }   
-    //     }
-    // }
+        $sql="SELECT *  from users where user_id = $log_id";
+        $result = mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['log_id']=$log_id;
+            $_SESSION['log_uname']=$row['user_name'];
+            $_SESSION['log_role']=$row['user_role'];
+            if (isset($_SESSION['schedule_id']) || isset($_SESSION['test_id'])) {
+                header("location: book.php");
+            }else{
+                header("location: dashboard.php");
+            }   
+        }
+    }
 }
 
 

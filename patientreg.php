@@ -42,7 +42,7 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Patient Name</label>
 							</div>
-							<div class="form-col" ">
+							<div class="form-col">
 								<input type="text" name="name" data-validation="required custom" data-validation-regexp="^([a-zA-Z]+\s)([a-zA-Z])+$" data-sanitize="trim capitalize"  data-validation-allowing=" " data-validation-error-msg="Enter first and last name only" placeholder="Enter your full name" autofocus>
 							</div>
 						</div>
@@ -52,8 +52,8 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Username</label>
 							</div>
-							<div class="form-col" ">
-								<input type="text" name="username" data-validation="required alphanumeric server" data-validation-url="form_validate.php"  data-validation-allowing="_" data-sanitize="trim lower" placeholder="Select username">
+							<div class="form-col">
+								<input type="text" name="username" data-validation="required alphanumeric server" data-validation-url="form_validate.php"  data-validation-allowing="_" data-sanitize="trim lower" placeholder="Enter username">
 							</div>
 						</div>
 
@@ -62,7 +62,7 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Address</label>
 							</div>
-							<div class="form-col" ">
+							<div class="form-col">
 								<textarea data-validation="required" data-validation-error-msg="Please enter your address" name="address"></textarea>
 							</div>
 						</div>
@@ -72,7 +72,7 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Mobile number</label>
 							</div>
-							<div class="form-col" ">
+							<div class="form-col">
 								<input data-validation="required number length" data-validation-length="10" data-validation-error-msg="Please enter 10 digit mobile number" type="text" name="mobileno" maxlength="10">
 							</div>
 						</div>
@@ -82,7 +82,7 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Guardian Name</label>
 							</div>
-							<div class="form-col" ">
+							<div class="form-col">
 								<input type="text" data-validation="required" data-validation-error-msg="Please enter your guardian name" name="guardian">
 							</div>
 						</div>
@@ -92,7 +92,7 @@ if(isset($_SESSION['log_id'])){
 							<div class="form-col form-label w-50">
 								<label for="">Emergency contact number</label>
 							</div>
-							<div class="form-col" ">
+							<div class="form-col">
 								<input type="text" data-validation="required number length" data-validation-length="10" data-validation-error-msg="Please enter 10 digit mobile number" name="emcont" maxlength="10">
 							</div>
 						</div>
@@ -181,7 +181,7 @@ if(isset($_SESSION['log_id'])){
 
 						<div class="form-row">
 							<div class="form-col form-btn">
-								<button class="btn btn-submit" type="submit">Submit</button>
+								<button class="btn btn-submit" type="submit" name="patientreg">Submit</button>
 								<button class="btn btn-submit" type="reset">Reset</button>
 							</div>
 						</div>

@@ -49,8 +49,8 @@ include 'master/db.php';
                         <td><?php echo $row["dept_name"]; ?></td>
                         <td><?php echo $row["status"]; ?></td>
                         <td>
-                            <a class="doc-anchor" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">Manage Schedule</a>
-                            <a class="doc-anchor" href="profile.php?id=<?php echo $row['user_id']; ?>">View Profile</a>
+                            <a class="doc-anchor font-10" href="manage_schedule.php?doc_id=<?php echo $row['doc_id']; ?>">Manage Schedule</a>
+                            <a class="doc-anchor font-10" href="profile.php?id=<?php echo $row['user_id']; ?>">View Profile</a>
                         </td>
                     </tr>
                     <?php
