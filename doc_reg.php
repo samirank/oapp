@@ -115,15 +115,15 @@
                     </div>
                     <div class="form-col">
                         <div class="form-radio-btn">
-                            <input type="radio" name="d_gen" value="male">
+                            <input type="radio" name="d_gen" value="Male">
                             male
                         </div>
                         <div class="form-radio-btn">
-                            <input type="radio" name="d_gen" value="female">
+                            <input type="radio" name="d_gen" value="Female">
                             female
                         </div>
                         <div class="form-radio-btn">
-                            <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="other">
+                            <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="Other">
                             Others
                         </div>
                     </div>
