@@ -13,23 +13,57 @@
 	background-color: #ddd;
 	margin-bottom: 20px;
 }
-.doc-result-container{
+.doc-result-container {
 	position: relative;
 	display: flex;
-	height: 100px;
+	height: 120px;
+	padding: 5px;
+	margin: 15px 0px;
 }
-.doc-result-container img{
-	width: 100px;
+.doc-result-container:hover {
+	background-color: #e0deff;
 }
 a.btn-a{
 	height: 32px;
 	width: 96px;
 	position: absolute;
 	right: 10px;
-	top: 25;
+	top: 40px;
 }
 table#view-form {
-    width: 60%;
-    margin: auto;
-    margin-top: 50px;
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+.doc-name {
+    font-size: 14px;
+    padding-left: 15px;
+    height: max-content;
+}
+.doc_dept {
+    position: absolute;
+    left: 140px;
+    top: 75px;
+}
+.doc_desig {
+    position: absolute;
+    padding: 1px 5px;
+    height: max-content;
+    color: #fff;
+    top: 38px;
+    left: 140px;
+}
+.doc_days {
+    position: absolute;
+    bottom: 5px;
+    left: 140px;
+}
+.doc_days span {
+    color: #e84393;
+}
+.doc_profile {
+    height: 120px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

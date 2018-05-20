@@ -78,7 +78,7 @@ $json = json_encode($json);
 
         <!-- Doctor Form -->
         <div id="tab-form">
-         <form action="process,php" method="POST">
+         <form action="process.php" method="POST">
             <div class="form-row">
              <div class="form-col form-label w-50">
                  <label for="">Doctor Name</label>
@@ -130,12 +130,11 @@ $json = json_encode($json);
                 <label for="">Designation</label>
             </div>
             <div class="form-col">
-                <select name="d_desig" data-validation="required" data-validation-error-msg="Please select designation">
+                <select name="d_desig" data-validation="required" data-validation-error-msg="Please select designation" <?php if($_SESSION['log_role']!="admin"){ echo "disabled"; } ?>>
                    <option value="Junior Doctor" <?php if($row['designation']=="Junior Doctor"){ echo "selected";} ?>>Junior Doctor</option>
                    <option value="General Practitioner" <?php if($row['designation']=="General Practitioner"){ echo "selected";} ?>>General Practitioner</option>
                    <option value="Consultant" <?php if($row['designation']=="Consultant"){ echo "selected";} ?>>Consultant</option>
-                   <option value="SAS Doctor" <?php if($row['designation']=="SAS Doctor"){ echo "selected";} ?>>SAS Doctor</option>
-                   <option value="Senior Doctor" <?php if($row['designation']=="Senior Doctor"){ echo "selected";} ?>>Senior Doctor</option>
+                   <option value="Specialist" <?php if($row['designation']=="Specialist"){ echo "selected";} ?>>Specialist</option>
                </select>
            </div>
        </div>
@@ -158,15 +157,15 @@ $json = json_encode($json);
         </div>
         <div class="form-col">
             <div class="form-radio-btn">
-                <input type="radio" name="d_gen" value="male" <?php if($row['gender']=="Male"){ echo "checked";} ?>>
+                <input type="radio" name="d_gen" value="Male" <?php if($row['gender']=="Male"){ echo "checked";} ?>>
                 Male
             </div>
             <div class="form-radio-btn">
-                <input type="radio" name="d_gen" value="female" <?php if($row['gender']=="Female"){ echo "checked";} ?>>
+                <input type="radio" name="d_gen" value="Female" <?php if($row['gender']=="Female"){ echo "checked";} ?>>
                 Female
             </div>
             <div class="form-radio-btn">
-                <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="other" <?php if($row['gender']=="Others"){ echo "checked";} ?>>
+                <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="Others" <?php if($row['gender']=="Others"){ echo "checked";} ?>>
                 Others
             </div>
         </div>

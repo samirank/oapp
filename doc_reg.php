@@ -74,8 +74,7 @@
                         <option value="Junior Doctor">Junior Doctor</option>
                         <option value="General Practitioner">General Practitioner</option>
                         <option value="Consultant">Consultant</option>
-                        <option value="SAS Doctor">SAS Doctor</option>
-                        <option value="Senior Doctor">Senior Doctor</option>
+                        <option value="Specialist">Specialist</option>
                     </select>
                 </div>
             </div>
@@ -123,7 +122,7 @@
                             female
                         </div>
                         <div class="form-radio-btn">
-                            <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="Other">
+                            <input type="radio" data-validation="required" data-validation-error-msg="Please select an option" name="d_gen" value="Others">
                             Others
                         </div>
                     </div>

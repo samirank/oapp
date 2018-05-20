@@ -41,21 +41,50 @@
 							$result = mysqli_query($con,$sql);
 							if (mysqli_num_rows($result) > 0) {
 								while ($row = mysqli_fetch_assoc($result)) { ?>
+									<?php 
+									if ($row['designation']=="Specialist") {
+										$badge="#4ac343";
+									}
+									elseif ($row['designation']=="Consultant") {
+										$badge="#7489fd";
+									}
+									elseif ($row['designation']=="General Practitioner") {
+										$badge="#e6bc44";
+									}
+									else{
+										$badge="#999";
+									}
+									$sql = "SELECT DISTINCT day FROM schedule WHERE doc_id = '{$row['doc_id']}' AND NOT status='Deleted' ORDER BY CASE WHEN day = 'Sunday' THEN 1 WHEN day = 'Monday' THEN 2 WHEN day = 'Tuesday' THEN 3 WHEN day = 'Wednesday' THEN 4 WHEN day = 'Thursday' THEN 5 WHEN day = 'Friday' THEN 6 WHEN day = 'Saturday' THEN 7 END ASC";
+									$result_days = mysqli_query($con,$sql);
+									$day = array();
+									if (mysqli_num_rows($result_days)>=1) {
+										while ($row_days = mysqli_fetch_assoc($result_days)) {
+											array_push($day, date('D',strtotime($row_days['day'])));
+										}
+										$days = implode(",", $day);
+									}
+									else{
+										$days = "N/A";
+									}
+									?>
 
-								<!-- Container for each doctor -->
-								<div class="doc-result-container">
-									<img src="<?php echo $row['profile_pic']; ?>" alt="doc_profile_pic">
-									<div class="doc-name"><?php echo $row['doc_name']; ?></div>
-									<div class="doc_dept"><?php echo $row['dept_name']; ?></div>
-									<a href="schedule.php?doc_id=<?php echo $row['doc_id'];?>" class="btn-a">Book Now</a>
-
-								</div>
-
-									<?php }}?>
-									<div>
+									<!-- Container for each doctor -->
+									<div class="doc-result-container">
+										<div style="background-image: url(<?php echo $row['profile_pic']; ?>);" class="doc_profile">
+										</div>
+										<div class="doc-name">Dr. <?php echo $row['doc_name']; ?></div>
+										<div class="doc_dept">Department : <?php echo $row['dept_name']; ?></div>
+										<div class="doc_desig" style="background-color: <?php echo $badge; ?>;"><?php echo $row['designation']; ?></div>
+										<div class="doc_days">Days :&nbsp;<span><?php print_r($days); ?></span></div>
+										<a href="schedule.php?doc_id=<?php echo $row['doc_id'];?>" class="btn-a">Book Now</a>
 
 									</div>
-								</form>
-								<?php } ?>
-							</td>
-							<?php include('master/foot.php'); ?>
+
+								<?php }}?>
+								<div>
+
+								</div>
+							</form>
+						<?php } ?>
+					</td>
+					<?php include('master/foot.php'); ?>
