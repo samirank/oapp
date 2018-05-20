@@ -34,9 +34,9 @@ if ($_SESSION['log_role']=="doctor") {
 
 // View Exception for Laboratorian
 if ($_SESSION['log_role']=="laboratorian") {
-		if(($role=="patient")&&(isset($_GET['id']))){
-			$user_id = $_GET['id'];
-		}
+	if(($role=="patient")&&(isset($_GET['id']))){
+		$user_id = $_GET['id'];
+	}
 }
 
 
@@ -133,10 +133,10 @@ if (mysqli_num_rows($result) != 1) {
 			<div class="change-pass">
 				<form action="process.php" method="POST">
 					Enter new password :
-					<input type="password" autofocus name="pass">
+					<input type="password" data-validation="strength" data-validation-strength="2" name="pass">
 					&emsp;&emsp;&emsp;
 					Confirm password :
-					<input type="password" name="cnf_pass">
+					<input type="password" data-validation="confirmation" data-validation-confirm="pass" data-validation-error-msg="Entered value do not match with your password." name="cnf_pass">
 					<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 					&emsp;&emsp;
 					<button class="btn" type="submit" name="change_pass">Change</button>
@@ -259,10 +259,10 @@ if (mysqli_num_rows($result) != 1) {
 				<div class="change-pass">
 					<form action="process.php" method="POST">
 						Enter new password :
-						<input type="password" autofocus name="pass">
+						<input type="password" data-validation="strength" data-validation-strength="2" name="pass">
 						&emsp;&emsp;&emsp;
 						Confirm password :
-						<input type="password" name="cnf_pass">
+						<input type="password" data-validation="confirmation" data-validation-confirm="pass" data-validation-error-msg="Entered value do not match with your password." name="cnf_pass">
 						<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 						&emsp;&emsp;
 						<button class="btn" type="submit" name="change_pass">Change</button>
@@ -450,10 +450,10 @@ if (mysqli_num_rows($result) != 1) {
 					<div class="change-pass">
 						<form action="process.php" method="POST">
 							Enter new password :
-							<input type="password" autofocus name="pass">
+							<input type="password" data-validation="strength" data-validation-strength="2" name="pass">
 							&emsp;&emsp;&emsp;
 							Confirm password :
-							<input type="password" name="cnf_pass">
+							<input type="password" data-validation="confirmation" data-validation-confirm="pass" data-validation-error-msg="Entered value do not match with your password." name="cnf_pass">
 							<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 							&emsp;&emsp;
 							<button class="btn" type="submit" name="change_pass">Change</button>
@@ -463,35 +463,74 @@ if (mysqli_num_rows($result) != 1) {
 
 
 				<?php if (isset($_GET['edit'])): ?>
+					<?php $json = json_encode(array("user_id"=>$_GET['edit'])); ?>
 
 					<!-- Edit profile -->
 					<div class="change-pass" style="display: block; margin-bottom: 20px;">
 						<form action="process.php" method="POST">
-							<table id="tab-form" style="margin: auto 25%;">
-								<tr><td colspan="2"><h3>Edit account</h3></td></tr>
-								<tr>
-									<td>Name :</td>
-									<td><input type="text" name="name" value="<?php echo $row['name']; ?>"></td>
-								</tr>
-								<tr>
-									<td>Email id :</td>
-									<td><input type="text" name="email_id" value="<?php echo $row['email_id']; ?>"></td>
-								</tr>
-								<tr>
-									<td>Phone no</td>
-									<td><input type="text" maxlength="10" name="phno" value="<?php echo $row['ph_no']; ?>"></td>
-								</tr>
-								<tr>
-									<td>Username :</td>
-									<td><input type="text" name="user_name" value="<?php echo $row['user_name']; ?>" disabled></td>
-								</tr>
-								<tr>
-									<td colspan="2">
+							<div id="tab-form" style="margin: auto 25%;">
+
+								<div class="form-row">
+									<div class="form-col form-label w-50">
+										<label for="">Name :</label>
+									</div>
+									<div class="form-col">
+										<input type="text" name="name" data-validation="required custom" data-validation-regexp="^([a-zA-Z]+\s)([a-zA-Z])+$" data-sanitize="trim capitalize"  data-validation-allowing=" " data-validation-error-msg="Enter first and last name only" placeholder="Enter your full name" value="<?php echo $row['name']; ?>" autofocus>
+									</div>
+								</div>
+
+
+								<div class="form-row">
+									<div class="form-col form-label w-50">
+										<label for="">Username</label>
+									</div>
+									<div class="form-col">
+										<input type="text" name="user_name" data-validation="required alphanumeric server" data-validation-param-name="edit_uname" data-validation-req-params='<?php echo $json; ?>' data-validation-url="form_validate.php" data-validation-allowing="_" data-sanitize="trim lower" placeholder="Enter username" value="<?php echo $row['user_name']; ?>">
+									</div>
+								</div>
+
+
+								<div class="form-row">
+									<div class="form-col form-label w-50">
+										<label for="">Email id :</label>
+									</div>
+									<div class="form-col">
+										<input type="text" name="email_id" data-validation="email" value="<?php echo $row['email_id']; ?>">
+									</div>
+								</div>
+
+
+
+								<div class="form-row">
+									<div class="form-col form-label w-50">
+										<label for="">Mobile no:</label>
+									</div>
+									<div class="form-col">
+										<input type="text" maxlength="10" name="phno" data-validation="required number length" data-validation-length="10" data-validation-error-msg="Please enter 10 digit mobile number" value="<?php echo $row['ph_no']; ?>">
+									</div>
+								</div>
+
+
+
+								<div class="form-row">
+									<div class="form-col form-label w-50">
+										<label for="">Date of registration :</label>
+									</div>
+									<div class="form-col">
+										<?php echo $row['date_of_reg']; ?>
+									</div>
+								</div>
+
+
+								<div class="form-row">
+									<div class="form-col form-btn">
 										<input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
-										<button style="margin-left: 17%;" class="btn" type="submit" name="edit_laboratorian">Submit</button>
-									</td>
-								</tr>
-							</table>    
+										<button class="btn btn-submit" type="submit" name="edit_laboratorian">Submit</button>
+									</div>
+								</div>
+
+
+							</div>
 						</form>
 					</div>
 
@@ -525,12 +564,12 @@ if (mysqli_num_rows($result) != 1) {
 						</tr>
 					</table>	
 				<?php endif ?>
-			<?php } ?>
+				<?php } ?>
 
 
 
 
-			<!-- End of file -->
-		</td>
-		<?php include 'master/foot.php'; 
-		?>
+				<!-- End of file -->
+			</td>
+			<?php include 'master/foot.php'; 
+			?>

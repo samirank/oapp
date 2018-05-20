@@ -510,3 +510,8 @@ span.help-block.form-error {
 	display: block;
 	padding: 10px 0px;
 }
+.change-pass-header {
+    font-size: 14;
+    padding: 10px 0px;
+    padding-bottom: 20px;
+}

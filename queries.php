@@ -13,6 +13,8 @@ if (mysqli_query($con,$sql)) {
 }
 $sql = "ALTER TABLE `users` CHANGE `user_role` `user_role` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL";
 mysqli_query($con,$sql);
+$sql = "ALTER TABLE `users` ADD UNIQUE(`user_name`);";
+mysqli_query($con,$sql);
 
 
 // Create Departments table

@@ -489,6 +489,15 @@ if (isset($_POST['edit_laboratorian'])) {
     $email_id = $_POST['email_id'];
     $phno = $_POST['phno'];
     $user_id = $_POST['id'];
+    $uname = $_POST['user_name'];
+
+
+    $sql = "UPDATE `users` SET `user_name`='$uname' WHERE user_id = '$user_id'";
+    if (!mysqli_query($con,$sql)) {
+        $_SESSION['msg'] = "<span style='color: red;'>Cannot change user name<span>";
+        header("location: profile.php?id=$user_id");
+    }
+
 
     $sql = "UPDATE `laboratorian` SET `name`='$name',`email_id`='$email_id',`ph_no`='$phno' WHERE user_id = '$user_id'";
     if (mysqli_query($con,$sql)) {

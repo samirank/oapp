@@ -34,7 +34,6 @@ include 'master/db.php';
                             <td><?php echo $row["gender"]; ?></td>
                             <td><?php echo $row["bgroup"]; ?></td>
                             <td><?php echo $row["status"]; ?></td>
-                            <form action="process.php" method="POST"></form>
                             <td>
                                 <a class="doc-anchor" href="bookings.php?id=<?php echo $row['user_id']; ?>">View Bookings</a>
                                 <a class="doc-anchor" href="profile.php?id=<?php echo $row['user_id']; ?>">View Profile</a>
