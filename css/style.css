@@ -418,11 +418,14 @@ table#view-form tr:hover {
 .profile-pic {
 	position: relative;
 }
-.profile-pic img {
+.profile-pic div {
 	position: absolute;
 	width: 200px;
+	height: 200px;
 	right: 16%;
 	top: 34px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .profile-pic a {
 	position: absolute;

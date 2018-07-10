@@ -62,11 +62,11 @@
                 ?>
                 <tr>
                     <td><?php echo $row["booking_id"] ?></td>
-                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["patient_name"] ?></a></td>
-                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['doc_user_id']; ?>"><?php echo $row["doc_name"] ?></a></td>
-                    <td><?php echo $row["dept_name"] ?></td>
-                    <td><?php echo $row["date_of_booking"] ?></td>
-                    <td><?php echo $row["date_of_appointment"] ?></td>
+                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['user_id']; ?>"><?php echo $row["patient_name"]; ?></a></td>
+                    <td><a style="color: #6c5ce7;" href="profile.php?id=<?php echo $row['doc_user_id']; ?>"><?php echo $row["doc_name"]; ?></a></td>
+                    <td><?php echo $row["dept_name"]; ?></td>
+                    <td><?php echo $row["date_of_booking"]; ?></td>
+                    <td><?php echo $row["date_of_appointment"]; ?></td>
                     <?php if ($_SESSION['log_role']=='patient') { ?>
                         <td>
                             <?php if ($row['status'] == "active"): ?>

@@ -45,7 +45,7 @@
             <div class="change-pass" style="display: block; text-align: center; margin-bottom: 20px;">
                 <form action="process.php" method="POST">
                  <b> Enter department name:</b>
-                 <input style="width: unset;" type="text" name="new_name" data-validation="required" data-validation-error-msg="Required" autofocus>
+                 <input style="width: unset;" type="text" name="dept_name" data-validation="required" data-validation-error-msg="Required" autofocus>
                  <button class="btn" type="submit" name="add_dept">Submit</button>
              </form>
          </div>

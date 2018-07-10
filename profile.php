@@ -71,7 +71,7 @@ $row = mysqli_fetch_assoc($result);
 	<li><a href="bookings.php">Bookings</a></li>
 <?php endif ?>
 <?php if ($_SESSION['log_role']=='admin'): ?>
-	<li><a href="doctors.php">Doctors</a></li>
+	<li><a href="doctors.php">Patients</a></li>
 <?php endif ?>
 <li>Profile</li>
 </ul>
@@ -146,7 +146,7 @@ if (mysqli_num_rows($result) != 1) {
 
 		<!-- Profile Picture -->
 		<div class="profile-pic">
-			<img src="<?php echo $row['profile_pic'] ?>" alt="profile picture">
+			<div style="background-image: url(<?php echo $row['profile_pic'] ?>);"></div>
 			<?php if ($_SESSION['log_role']=="doctor"): ?>
 				<a class="btn" href="">Change profile picture</a>
 			<?php endif ?>
