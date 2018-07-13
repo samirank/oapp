@@ -1,4 +1,9 @@
 * { padding: 0; margin: 0; }
+:root{
+	--color-purple: #6c5ce7;
+	--color-pink: #e84393;
+	--color-purple-light: #a6a2fa;
+}
 html, body {
 	font-family: "Roboto", sans-serif !important;
 	min-height: 100% !important;
@@ -517,4 +522,40 @@ span.help-block.form-error {
     font-size: 14;
     padding: 10px 0px;
     padding-bottom: 20px;
+}
+
+.card-container {
+	display: flex;
+}
+.card {
+	max-height: 160px;
+	width: 200px;
+	/*background-color: #666;*/
+	color: #fff;
+	/*padding: 16px;*/
+	margin: 10px;
+}
+.card-content {
+	height: auto;
+	text-align: center;
+	font-size: 50px;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.card-link{
+	padding: 10px;
+	text-transform: uppercase;
+	text-align: center;
+}
+.bg-pink {
+	background-color: var(--color-pink);
+}
+.bg-purple {
+	background-color: var(--color-purple);
+}
+.bg-purple-light {
+	background-color: var(--color-purple-light);
+}
+.card a{
+	color: #fff;
 }

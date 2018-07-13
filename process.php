@@ -34,7 +34,6 @@ if(isset($_POST['login_submit'])){
     }
 }
 
-
 // Add Department
 if (isset($_POST['add_dept'])) {
     $dept_name = $_POST['dept_name'];
@@ -46,7 +45,6 @@ if (isset($_POST['add_dept'])) {
         die(mysqli_error($con));
     }
 }
-
 
 // Add lab test
 if (isset($_POST['add_lab'])) {
@@ -138,7 +136,6 @@ if(isset($_POST['patientreg'])){
     }
 }
 
-
 //Add new schdeule
 if (isset($_POST['add_schedule'])) {
    $doc_id = $_POST['doc_id'];
@@ -156,7 +153,6 @@ if (isset($_POST['add_schedule'])) {
     die(mysqli_error($con));
 } 
 }
-
 
 // Cancel appointment
 if (isset($_GET['cancel_doc'])) {
@@ -294,7 +290,6 @@ if (isset($_GET['suspend'])) {
    }
 }
 
-
 // Activate account
 if (isset($_GET['activate'])) {
     $user_id = $_GET['activate'];
@@ -306,7 +301,6 @@ if (isset($_GET['activate'])) {
        die(mysqli_error($con));
    }
 }
-
 
 // Delete Schedule
 if (isset($_GET['delete_schedule'])) {
@@ -329,16 +323,6 @@ if (isset($_GET['delete_acc'])) {
        die(mysqli_error($con));
    }
 }
-
-
-
-
-
-
-
-
-
-
 
 // Add/delete test days
 if (isset($_POST['test_day'])) {
@@ -452,9 +436,6 @@ if (isset($_POST['test_day'])) {
 }
 }
 }
-
-
-
 
 // Add new laboratorian
 if (isset($_POST['add_laboratorian'])) {

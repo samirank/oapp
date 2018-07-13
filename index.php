@@ -17,7 +17,6 @@
 				<td colspan="2" id="menu">
 					<ul>
 						<li><a class="menu-item-active" href="index.php">Home</a></li>
-						<li><a href="about.php">About</a></li>
 						<?php if (isset($_SESSION['log_id'])) {
 							echo "<li><a href='dashboard.php'>Dashboard</a></li>";
 						} else {
